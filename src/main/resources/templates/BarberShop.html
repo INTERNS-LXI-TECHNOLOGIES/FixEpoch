@@ -27,45 +27,11 @@
 
     <!-- Theme Style -->
     <link rel="stylesheet" href="content/css/style.css">
-
-    <script language="JavaScript">
-		jQuery.validator.setDefaults({
-		  	debug: true,
-		  	success:  function(label){
-        		label.attr('id', 'valid');
-   		 	},
-		});
-		$( "#myform" ).validate({
-		  	rules: {
-			    password: "required",
-		    	comfirm_password: {
-		      		equalTo: "#password"
-		    	}
-		  	},
-		  	messages: {
-		  		first_name: {
-		  			required: "Please enter a firstname"
-		  		},
-		  		last_name: {
-		  			required: "Please enter a lastname"
-		  		},
-		  		your_email: {
-		  			required: "Please provide an email"
-		  		},
-		  		password: {
-	  				required: "Please enter a password"
-		  		},
-		  		comfirm_password: {
-		  			required: "Please enter a password",
-		      		equalTo: "Wrong Password"
-		    	}
-		  	}
-		});
-	</script>
+    <link rel="stylesheet" href="content/css/login/login.css">
 
 </head>
-<body>
 
+<body>
 <header role="banner">
 
     <nav class="navbar navbar-expand-md navbar-dark bg-light">
@@ -361,7 +327,7 @@
         <div class="row justify-content-center align-items-center intro">
             <div class="col-md-8 text-center element-animate">
                 <h2 class="mb-4"><span>Appoint a Haircut Today and</span> Get 25% discount</h2>
-                <p><a href="#" class="btn btn-black">Make an Appointment</a></p>
+                <p><a onclick="openForm()" class="btn btn-black">Make an Appointment</a></p>
             </div>
         </div>
     </div>
@@ -370,72 +336,58 @@
 
 
 <!--Log in Section-->
-<!--<div class="form-v4-content">
-    <div class="form-left">
-        <h2>INFOMATION</h2>
-        <p class="text-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Et molestie ac feugiat sed. Diam volutpat commodo.</p>
-        <p class="text-2"><span>Eu ultrices:</span> Vitae auctor eu augue ut. Malesuada nunc vel risus commodo viverra. Praesent elementum facilisis leo vel.</p>
-        <div class="form-left-last">
-            <input type="submit" name="account" class="account" value="Have An Account">
+
+<span onclick="closeForm()" class="close">&times;</span>
+<div class="form-popup" id="popupForm">
+    <div class="form-v4-content">
+        <div class="form-left">
+            <h2>INFOMATION</h2>
+            <p class="text-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Et molestie ac feugiat sed. Diam volutpat commodo.</p>
+            <p class="text-2"><span>Eu ultrices:</span> Vitae auctor eu augue ut. Malesuada nunc vel risus commodo viverra. Praesent elementum facilisis leo vel.</p>
+            <div class="form-left-last">
+                <input type="submit" name="account" class="account" value="Have An Account">
+            </div>
         </div>
+        <form class="form-detail" action="#" method="post" id="#myform">
+            <h2>REGISTER FORM</h2>
+            <div class="form-group">
+                <div class="form-row form-row-1">
+                    <label for="first_name">First Name</label>
+                    <input type="text" name="first_name" id="first_name" class="input-text">
+                </div>
+                <div class="form-row form-row-1">
+                    <label for="last_name">Last Name</label>
+                    <input type="text" name="last_name" id="last_name" class="input-text">
+                </div>
+            </div>
+            <div class="form-row">
+                <label for="your_email">Your Email</label>
+                <input type="text" name="your_email" id="your_email" class="input-text" required pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}">
+            </div>
+            <div class="form-group">
+                <div class="form-row form-row-1 ">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" class="input-text" required>
+                </div>
+                <div class="form-row form-row-1">
+                    <label for="comfirm_password">Comfirm Password</label>
+                    <input type="password" name="comfirm_password" id="comfirm_password" class="input-text" required>
+                </div>
+            </div>
+            <div class="form-checkbox">
+                <label class="container"><p>I agree to the <a href="#" class="text">Terms and Conditions</a></p>
+                    <input type="checkbox" name="checkbox">
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+            <div class="form-row-last">
+                <input type="submit" name="register" class="register" value="Register">
+            </div>
+        </form>
     </div>
-    <form class="form-detail" action="#" method="post" id="myform">
-        <h2>REGISTER FORM</h2>
-        <div class="form-group">
-            <div class="form-row form-row-1">
-                <label for="first_name">First Name</label>
-                <input type="text" name="first_name" id="first_name" class="input-text">
-            </div>
-            <div class="form-row form-row-1">
-                <label for="last_name">Last Name</label>
-                <input type="text" name="last_name" id="last_name" class="input-text">
-            </div>
-        </div>
-        <div class="form-row">
-            <label for="your_email">Your Email</label>
-            <input type="text" name="your_email" id="your_email" class="input-text" required pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}">
-        </div>
-        <div class="form-group">
-            <div class="form-row form-row-1 ">
-                <label for="password">Password</label>
-                <input type="password" name="password" id="password" class="input-text" required>
-            </div>
-            <div class="form-row form-row-1">
-                <label for="comfirm-password">Comfirm Password</label>
-                <input type="password" name="comfirm_password" id="comfirm_password" class="input-text" required>
-            </div>
-        </div>
-        <div class="form-checkbox">
-            <label class="container"><p>I agree to the <a href="#" class="text">Terms and Conditions</a></p>
-                <input type="checkbox" name="checkbox">
-                <span class="checkmark"></span>
-            </label>
-        </div>
-        <div class="form-row-last">
-            <input type="submit" name="register" class="register" value="Register">
-        </div>
-    </form>
-</div>-->
+</div>
 
-<!--<section class="site-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 video-wrap mb-5">
-                <img src="content/images/img_5.jpg" alt="Image placeholder" class="img-fluid">
-                <a href="https://vimeo.com/channels/staffpicks/93951774" class="popup-vimeo btn-video"><span class="fa fa-play"></span></a>
-            </div>
-            <div class="col-md-6 pl-md-5">
-                <h3>Good Looking Style</h3>
-                <p class="lead">Start with us today</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam facere a excepturi quod impedit rerum ipsum totam incidunt, necessitatibus id veritatis maiores quos saepe dolore commodi magnam fugiat. Incidunt, omnis.</p>
-                <p>Nobis quae eaque facere architecto eligendi, voluptas quasi, blanditiis aperiam possimus inventore quis nam! Cupiditate necessitatibus, voluptatem excepturi placeat exercitationem quos vitae ut vero dolorem, provident sit odio porro facere.</p>
-            </div>
-        </div>
-    </div>
-</section>-->
-<!-- END section -->
-
-
+<!--Start Footer-->
 
 <footer class="site-footer">
     <div class="container">
@@ -513,7 +465,42 @@
 <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+<script src="content/js/login/login.js"></script>
 
+<script>
+		jQuery.validator.setDefaults({
+		  	debug: true,
+		  	success:  function(label){
+        		label.attr('id', 'valid');
+   		 	},
+		});
+		$( "#myform" ).validate({
+		  	rules: {
+			    password: "required",
+		    	comfirm_password: {
+		      		equalTo: "#password"
+		    	}
+		  	},
+		  	messages: {
+		  		first_name: {
+		  			required: "Please enter a firstname"
+		  		},
+		  		last_name: {
+		  			required: "Please enter a lastname"
+		  		},
+		  		your_email: {
+		  			required: "Please provide an email"
+		  		},
+		  		password: {
+	  				required: "Please enter a password"
+		  		},
+		  		comfirm_password: {
+		  			required: "Please enter a password",
+		      		equalTo: "Wrong Password"
+		    	}
+		  	}
+		});
+	</script>
 
 </body>
 </html>
