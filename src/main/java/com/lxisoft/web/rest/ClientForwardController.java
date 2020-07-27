@@ -20,4 +20,10 @@ public class ClientForwardController {
     {
         return "barbour-shop-firms";
     }
+
+    @GetMapping(value = "/testFirms")
+    public String getTestPage()
+    {
+        return "test-firms";
+    }
 }

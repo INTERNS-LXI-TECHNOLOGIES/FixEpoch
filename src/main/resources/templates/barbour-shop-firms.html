@@ -1,181 +1,422 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-<title>View Our Client Firms</title>
-<link href="content/barbershopFirms/css/css.css" rel="stylesheet" type="text/css">
-<link href="content/barbershopFirms/css/font-awsome.min.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="content/barbershopFirms/font/fontawsome/font-awseome.min.css">
+    <meta charset="utf-8">
+    <title>BizPage Bootstrap Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
+
+    <!-- Bootstrap CSS File -->
+    <link href="content/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Libraries CSS Files -->
+    <link href="content/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="content/lib/animate/animate.min.css" rel="stylesheet">
+    <link href="content/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+    <link href="content/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="content/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+    <!-- Main Stylesheet File -->
+    <link href="/content/css/barbershopFirms/style.css" rel="stylesheet">
+
+
 </head>
 
 <body>
 
-
-    <header>
-      <div class="main">
-        <!-- <div class="logo">
-          <img src="com/img/logo.jpeg">
-        </div> -->
-        <ul>
-          <li class="active"><a href="#">Home</a></li>
-          <li><a href="#firms">Firms</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#">Contact</a></li>
-      </div>
-      <div class="title">
-        <h2>We Helps You To Look better</h2>
-      </div>
-      <div class="button">
-        <a href="#firms" class="btn">View Our Client Firms</a>
-      </div>
-    </header>
-
-    
-
-
-  <div class="firms-area" id="firms"> 
-      
-      <!-- Header -->
-<div class="description">
-  <h1>At Your Service</h1>
-  <p>These Are The Most Trusted Firms In Your Town.</p>
-</div>
-
-<!-- Photo Grid -->
-<div class="row"> 
-  <div class="column">
-    <div>
-      <h2><b>Beardo</b></h2>
-      <img src="content/barbershopFirms/img/img1.jpg" style="width:100%;height: 200px;margin-bottom: 40px;">
-      <span class="fa fa-star checked"></span>
-      <span class="fa fa-star checked"></span>
-      <span class="fa fa-star checked"></span>
-      <span class="fa fa-star"></span>
-      <span class="fa fa-star"></span>
-      <a href="#" class="btn-book">Book</a>
+<!--==========================
+  Header
+============================-->
+<header id="header">
+    <div class="container-fluid">
+        <nav id="nav-menu-container">
+            <ul class="nav-menu">
+                <li class="menu-active"><a href="#intro">Home</a></li>
+                <li><a href="#services">Firms</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav><!-- #nav-menu-container -->
     </div>
-    <div>
-      <h2 style="margin-top: 23px;"><b>Razor King</b></h2>
-      <img src="content/barbershopFirms/img/img2.jpg" style="width:100%;height: 200px;margin-bottom: 40px;">
-      <span class="fa fa-star checked"></span>
-      <span class="fa fa-star checked"></span>
-      <span class="fa fa-star checked"></span>
-      <span class="fa fa-star"></span>
-      <span class="fa fa-star"></span>
-      <a href="#" class="btn-book">Book</a>
+</header><!-- #header -->
+
+<!--==========================
+  Intro Section
+============================-->
+<section id="intro">
+    <div class="intro-container">
+        <div id="introCarousel" class="carousel  slide carousel-fade" data-ride="carousel">
+
+            <ol class="carousel-indicators"></ol>
+
+            <div class="carousel-inner" role="listbox">
+
+                <div class="carousel-item active">
+                    <div class="carousel-background"><img src="content/images/barbershopFirms/img7.jpeg" alt=""></div>
+                    <div class="carousel-container">
+                        <div class="carousel-content">
+                            <h2>Looking For A Barber</h2>
+                            <p style="font-size: 35px;">We Offer You The Best Barbers In Town.</p>
+                            <a href="#featured-services" class="btn-get-started scrollto">Get Started</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="carousel-background"><img src="content/images/barbershopFirms/img6.jpeg" alt=""></div>
+                    <div class="carousel-container">
+                        <div class="carousel-content">
+                            <h2>Look Your Best,Feel Your Best</h2>
+                            <p style="font-size: 35px;">Where Mens Wants To Look There Very Best.</p>
+                            <a href="#featured-services" class="btn-get-started scrollto">Get Started</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <a class="carousel-control-prev" href="#introCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon ion-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+
+            <a class="carousel-control-next" href="#introCarousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon ion-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+
+        </div>
     </div>
-  </div>
+</section><!-- #intro -->
 
-  <div class="column">
-     <div>
-      <h2><b>Razor King</b></h2>
-    <img src="content/barbershopFirms/img/img3.jpg" style="width:100%;height: 200px;margin-bottom: 40px;">
-      <span class="fa fa-star checked"></span>
-      <span class="fa fa-star checked"></span>
-      <span class="fa fa-star checked"></span>
-      <span class="fa fa-star"></span>
-      <span class="fa fa-star"></span>
-      <a href="#" class="btn-book">Book</a>
+<main id="main">
+
+
+
+    <!--==========================
+      Services Section
+    ============================-->
+    <section id="services">
+        <div class="container">
+
+            <header class="section-header wow fadeInUp">
+                <h3>Firms</h3>
+                <p>These Are The Most Trusted And Quality BarberShops In Your Town.</p>
+            </header>
+
+            <!-- Row 1 -->
+            <div class="row">
+
+                <!-- Wrapper for carousel items -->
+                <div class="col-sm-3">
+                    <div class="thumb-wrapper">
+                        <div class="img-box">
+                            <img src="content/images/barbershopFirms/img1.jpg" class="img-fluid" alt="" style="height:200px;width:250px;">
+                        </div>
+                        <div class="thumb-content">
+                            <h4>Creative Cuts</h4>
+
+                            <div class="star-rating">
+                                <ul class="list-inline">
+                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                    <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                                </ul>
+                            </div>
+                            <a href="#" class="btn btn-success">Book A Service</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="thumb-wrapper">
+                        <div class="img-box">
+                            <img src="content/images/barbershopFirms/img2.jpg" class="img-fluid" alt="" style="height:200px;width:250px;">
+                        </div>
+                        <div class="thumb-content">
+                            <h4>Razor King</h4>
+
+                            <div class="star-rating">
+                                <ul class="list-inline">
+                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                    <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                                </ul>
+                            </div>
+                            <a href="#" class="btn btn-success">Book A Service</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <div class="thumb-wrapper">
+                        <div class="img-box">
+                            <img src="content/images/barbershopFirms/img3.jpg" class="img-fluid" alt="" style="height:200px;width:250px;">
+                        </div>
+                        <div class="thumb-content">
+                            <h4>Empire Cuts</h4>
+
+                            <div class="star-rating">
+                                <ul class="list-inline">
+                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                    <li class="list-inline-item"><i class="fa fa-star-half-o"></i></li>
+                                </ul>
+                            </div>
+                            <a href="#" class="btn btn-success">Book A Service</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="thumb-wrapper">
+                        <div class="img-box">
+                            <img src="content/images/barbershopFirms/img4.jpg" class="img-fluid" alt="" style="height:200px;width:250px;">
+                        </div>
+                        <div class="thumb-content">
+                            <h4>Beardo</h4>
+
+                            <div class="star-rating">
+                                <ul class="list-inline">
+                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                    <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                                    <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                                </ul>
+                            </div>
+                            <a href="#" class="btn btn-success">Book A Service</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 2 -->
+            <hr>
+            <div class="row">
+
+                <!-- Wrapper for carousel items -->
+                <div class="col-sm-3">
+                    <div class="thumb-wrapper">
+                        <div class="img-box">
+                            <img src="content/images/barbershopFirms/img5.jpg" class="img-fluid" alt="" style="height:200px;width:250px;">
+                        </div>
+                        <div class="thumb-content">
+                            <h4>The Men's Mane</h4>
+
+                            <div class="star-rating">
+                                <ul class="list-inline">
+                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                    <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                                </ul>
+                            </div>
+                            <a href="#" class="btn btn-success">Book A Service</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="thumb-wrapper">
+                        <div class="img-box">
+                            <img src="content/images/barbershopFirms/img8.jpg" class="img-fluid" alt="" style="height:200px;width:250px;">
+                        </div>
+                        <div class="thumb-content">
+                            <h4>HairoScope</h4>
+
+                            <div class="star-rating">
+                                <ul class="list-inline">
+                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                    <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                                </ul>
+                            </div>
+                            <a href="#" class="btn btn-success">Book A Service</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <div class="thumb-wrapper">
+                        <div class="img-box">
+                            <img src="content/images/barbershopFirms/img9.jpg" class="img-fluid" alt="" style="height:200px;width:250px;">
+                        </div>
+                        <div class="thumb-content">
+                            <h4>Hair-o-Dynamics</h4>
+
+                            <div class="star-rating">
+                                <ul class="list-inline">
+                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                    <li class="list-inline-item"><i class="fa fa-star-half-o"></i></li>
+                                </ul>
+                            </div>
+                            <a href="#" class="btn btn-success">Book A Service</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="thumb-wrapper">
+                        <div class="img-box">
+                            <img src="content/images/barbershopFirms/img10.jpg" class="img-fluid" alt="" style="height:200px;width:250px;">
+                        </div>
+                        <div class="thumb-content">
+                            <h4>The Hair Port</h4>
+
+                            <div class="star-rating">
+                                <ul class="list-inline">
+                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                    <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                                    <li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+                                </ul>
+                            </div>
+                            <a href="#" class="btn btn-success">Book A Service</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+        </div>
+
+
+
+
+
+
+
+
+        <!-- Carousel controls -->
+
+        </div>
+
+        </div>
+    </section><!-- #services -->
+
+
+    <!--==========================
+   About Us Section
+ ============================-->
+    <section id="about">
+        <div class="container">
+
+            <header class="section-header">
+                <h3>About Us</h3>
+
+                <p><b>We provide better quality barbershops ,Where You can relax and get groomed .Our Friendly, barber shop firms delivers the best haircuts,shaves and spa service in town.You can explore our client firms now.</b></p>
+            </header>
+
+
+        </div>
+
+    </section><!-- #about -->
+
+
+    <!--==========================
+      Contact Section
+    ============================-->
+    <section id="contact" class="section-bg wow fadeInUp">
+        <div class="container">
+
+            <div class="section-header">
+                <h3>Contact Us</h3>
+                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p>
+            </div>
+
+            <div class="row contact-info">
+
+                <div class="col-md-4">
+                    <div class="contact-address">
+                        <i class="ion-ios-location-outline"></i>
+                        <h3>Address</h3>
+                        <address>A108 Adam Street, NY 535022, USA</address>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="contact-phone">
+                        <i class="ion-ios-telephone-outline"></i>
+                        <h3>Phone Number</h3>
+                        <p><a href="tel:+155895548855">+1 5589 55488 55</a></p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="contact-email">
+                        <i class="ion-ios-email-outline"></i>
+                        <h3>Email</h3>
+                        <p><a href="mailto:info@example.com">info@example.com</a></p>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+        </div>
+    </section><!-- #contact -->
+
+</main>
+
+<!--==========================
+  Footer
+============================-->
+<footer id="footer">
+    <div class="container">
+        <div class="copyright">
+            &copy; Copyright <strong>BizPage</strong>. All Rights Reserved
+        </div>
+        <div class="credits">
+            <!--
+              All the links in the footer should remain intact.
+              You can delete the links only if you purchased the pro version.
+              Licensing information: https://bootstrapmade.com/license/
+              Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=BizPage
+            -->
+            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        </div>
     </div>
-     <div>
-      <h2 style="margin-top: 23px;"><b>Razor King</b></h2>
-    <img src="content/barbershopFirms/img/img4.jpg" style="width:100%;height: 200px;margin-bottom: 40px;">
-      <span class="fa fa-star checked"></span>
-      <span class="fa fa-star checked"></span>
-      <span class="fa fa-star checked"></span>
-      <span class="fa fa-star"></span>
-      <span class="fa fa-star"></span>
-      <a href="#" class="btn-book">Book</a>
-    </div>    
-  </div>
+</footer><!-- #footer -->
 
-  <div class="column">
-       <div>
-      <h2><b>Razor King</b></h2>
-          <img src="content/barbershopFirms/img/img5.jpg" style="width:100%;height: 200px;margin-bottom: 40px;">
-        <span class="fa fa-star checked"></span>
-      <span class="fa fa-star checked"></span>
-      <span class="fa fa-star checked"></span>
-      <span class="fa fa-star"></span>
-      <span class="fa fa-star"></span>
-      <a href="#" class="btn-book">Book</a>
-    </div>
-     <div>
-      <h2 style="margin-top: 23px;"><b>Razor King</b></h2>
-          <img src="content/barbershopFirms/img/img8.jpg" style="width:100%;height: 200px;margin-bottom: 40px;">
+<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+<!-- Uncomment below i you want to use a preloader -->
+<!-- <div id="preloader"></div> -->
 
-      <span class="fa fa-star checked"></span>
-      <span class="fa fa-star checked"></span>
-      <span class="fa fa-star checked"></span>
-      <span class="fa fa-star"></span>
-      <span class="fa fa-star"></span>
-      <a href="#" class="btn-book">Book</a>
-    </div>
+<!-- JavaScript Libraries -->
+<script src="content/lib/jquery/jquery.min.js"></script>
+<script src="content/lib/jquery/jquery-migrate.min.js"></script>
+<script src="content/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="content/lib/easing/easing.min.js"></script>
+<script src="content/lib/superfish/hoverIntent.js"></script>
+<script src="content/lib/superfish/superfish.min.js"></script>
+<script src="content/lib/wow/wow.min.js"></script>
+<script src="content/lib/waypoints/waypoints.min.js"></script>
+<script src="content/lib/counterup/counterup.min.js"></script>
+<script src="content/lib/owlcarousel/owl.carousel.min.js"></script>
+<script src="content/lib/isotope/isotope.pkgd.min.js"></script>
+<script src="content/lib/lightbox/js/lightbox.min.js"></script>
+<script src="content/lib/touchSwipe/jquery.touchSwipe.min.js"></script>
 
-   
-  </div>
-  <div class="column">
-        <div>
-      <h2><b>Razor King</b></h2>
-          <img src="content/barbershopFirms/img/img9.jpg" style="width:100%;height: 200px;margin-bottom: 40px;">
+<!-- Template Main Javascript File -->
+<script src="content/js/barbershopFirms/main.js"></script>
 
-      <span class="fa fa-star checked"></span>
-      <span class="fa fa-star checked"></span>
-      <span class="fa fa-star checked"></span>
-      <span class="fa fa-star"></span>
-      <span class="fa fa-star"></span>
-      <a href="#" class="btn-book">Book</a>
-    </div>
-        <div>
-      <h2 style="margin-top: 23px;"><b>Razor King</b></h2>
-          <img src="content/barbershopFirms/img/img10.jpg" style="width:100%;height: 200px;margin-bottom: 40px;">
-
-      <span class="fa fa-star checked"></span>
-      <span class="fa fa-star checked"></span>
-      <span class="fa fa-star checked"></span>
-      <span class="fa fa-star"></span>
-      <span class="fa fa-star"></span>
-      <a href="#" class="btn-book">Book</a>
-    </div>
-    
-  </div>
-</div>
-
-   </div>  
-   
-  
-          
-
-    <div class="about-area" id="about" style="margin-top:10rem">
-      <div class="text-part">
-          <h1>About</h1>
-          <hr>
-          <h2 class="text-dark mt-0">We've got what you need!</h2>
-                        <p class="text-dark-50 mb-4" style="padding: 30px;font-size: 17px">We provide better quality barbershops ,Where You can relax and get groomed .Our Friendly, barber shop firms delivers the best haircuts,shaves and spa service in town.You can explore our client firms now</p>
-                        <a class="btn btn-primary btn-xl js-scroll-trigger" href="#firms" style="border-radius: 25px;font-size: 22px">Get Started!</a> 
-      </div>
-      
-    </div>
-
-     <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
-
-  <!-- Footer -->
-<footer class="page-footer font-small cyan darken-3">
-
-  <!-- Copyright -->
-  <div class="footer-copyright text-center py-3">© 2020 Copyright
-    
-  </div>
-  <!-- Copyright -->
-
-</footer>
-<!-- Footer -->
-  
-
-
-  <!-- Javascript files -->
-    <script src="content/barbershopFirms/js/back2top.js"></script>
-    <script src="content/barbershopFirms/js/slider.js"></script>
 </body>
 </html>
