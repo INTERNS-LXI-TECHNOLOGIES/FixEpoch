@@ -31,7 +31,7 @@
 
 </head>
 
-<body>
+<body id="body">
 <header role="banner">
 
     <nav class="navbar navbar-expand-md navbar-dark bg-light">
@@ -337,7 +337,6 @@
 
 <!--Log in Section-->
 
-<span onclick="closeForm()" class="close">&times;</span>
 <div class="form-popup" id="popupForm">
     <div class="form-v4-content">
         <div class="form-left">
@@ -349,6 +348,7 @@
             </div>
         </div>
         <form class="form-detail" action="#" method="post" id="#myform">
+            <span onclick="closeForm()" class="close">&times</span>
             <h2>REGISTER FORM</h2>
             <div class="form-group">
                 <div class="form-row form-row-1">
@@ -382,20 +382,13 @@
             </div>
             <div class="form-row-last">
                 <input type="submit" name="register" class="register" value="Register">
+                <!--<input type="submit" onclick="closeForm()" name="cancel" class="register" value="Cancel">-->
             </div>
         </form>
     </div>
 </div>
 
 <!--Start Footer-->
-
-<div class="mb-3 custom-nav" style="text-align: center; padding-top: 21px;">
-    <form>
-    <button formaction="barbour-shop-firms" class="btn btn-primary btn-sm custom-prev mr-2 mb-2"><<</button>
-    </form>
-    <a href="barbour-shop-firms" class="btn btn-primary btn-sm custom-prev mr-2 mb-2"><<</a>
-    <a href="#" class="btn btn-primary btn-sm custom-next mr-2 mb-2"><span class="ion-android-arrow-forward"></span></a>
-</div>
 
 <footer class="site-footer">
     <div class="container">
