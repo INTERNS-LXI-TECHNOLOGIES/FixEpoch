@@ -10,6 +10,10 @@ public class UserController {
     public String home(){
         return "home";
     }
+    @GetMapping(value = "/contact1")
+    public String contact1(){
+        return "contact1";
+    }
 
     @GetMapping(value = "/getFirmDetails")
     public String getFirmDetails(){
