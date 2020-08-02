@@ -344,16 +344,21 @@
             <p class="text-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Et molestie ac feugiat sed. Diam volutpat commodo.</p>
             <p class="text-2"><span>Eu ultrices:</span> Vitae auctor eu augue ut. Malesuada nunc vel risus commodo viverra. Praesent elementum facilisis leo vel.</p>
             <div class="form-left-last">
-                <input type="submit" name="account" class="account" value="Have An Account">
+                <input  type="button" onclick="toggleForm('myform','myform2')" name="account" class="account" value="Have An Account">
             </div>
         </div>
-        <form class="form-detail" action="#" method="post" id="#myform">
+
+        <form id="myform2">
+            <input type="text">
+        </form>
+
+        <form class="form-detail" action="#" method="post" id="myform">
             <span onclick="closeForm()" class="close">&times</span>
             <h2>REGISTER FORM</h2>
             <div class="form-group">
                 <div class="form-row form-row-1">
                     <label for="first_name">First Name</label>
-                    <input type="text" name="first_name" id="first_name" class="input-text">
+                    <input pattern="/^[a-zA-Z ]{2,30}$/" type="text" name="first_name" id="first_name" class="input-text">
                 </div>
                 <div class="form-row form-row-1">
                     <label for="last_name">Last Name</label>
@@ -444,6 +449,7 @@
             </div>
         </div>
     </div>
+
 </footer>
 <!-- END footer -->
 
@@ -463,12 +469,46 @@
 
 <script src="content/js/main.js"></script>
 
-<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
-<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="http://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<script src="http://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
 <script src="content/js/login/login.js"></script>
+<style>
+    #myform2 {
+        display:none;
+    }
+</style>
+<script type="text/javascript" language="javascript">
 
-<script type="text/javascript">
+
+    function toggleForm(id1,id2) {
+    var element1 = document.getElementById(id1);
+    var element2 = document.getElementById(id2);
+
+    if(element1.style.display == 'none'){
+    element1.style.display = 'block';
+    element2.style.display = 'none';
+    }
+    else {
+    element1.style.display = 'none';
+    element2.style.display = 'block';
+    }
+    }
+
+    function checkIfUserIsLoggedIn(){
+
+    //var url = 'http://loclhost:8080/
+
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+
+    }
+};
+xmlHttp.open("GET", "", true);
+xmlHttp.send();
+    }
+
     $(document).ready(function(){
 
     jQuery.validator.setDefaults({
