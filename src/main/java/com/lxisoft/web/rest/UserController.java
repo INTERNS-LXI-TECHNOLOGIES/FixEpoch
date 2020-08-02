@@ -25,9 +25,19 @@ public class UserController {
         return "hairstyle";
     }
 
-    @GetMapping(value = "/about")
-    public String about(){
-        return "about";
+    @GetMapping(value = "/index")
+    public String index(){
+        return "index";
+    }
+
+    @GetMapping(value = "/shopindex")
+    public String shopindex(){
+        return "shopindex";
+    }
+
+    @GetMapping(value = "/about1")
+    public String about1(){
+        return "about1";
     }
 
     @GetMapping(value = "/contact")
