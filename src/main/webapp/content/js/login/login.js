@@ -1,12 +1,10 @@
 function openForm() {
         document.getElementById("popupForm").style.display = "block";
         document.getElementById("transparent-div").style.display = "block";
-         //document.getElementsByTagName('body')[0].style.overflow='hidden';
         disableBodyScroll();
         }
 function closeForm() {
   document.getElementById("popupForm").style.display = "none";
-  //document.getElementsByTagName('body')[0].style.overflow='scroll';
 enableBodyScroll();
 }
 
