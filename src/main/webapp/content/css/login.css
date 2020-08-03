@@ -44,7 +44,7 @@ body {
   margin-bottom: 34px;
 }
 .form-v4-content .form-left {
-  background: #3786bd;
+  background: #0a0a0ad4;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
   padding: 20px 40px;
@@ -98,7 +98,7 @@ body {
   width: 100%;
 }
 .form-v4-content .form-detail h2 {
-  color: #3786bd;
+  color: #040404;
 }
 .form-v4-content .form-detail .form-group {
   display: flex;
@@ -253,11 +253,11 @@ body {
 }
 .form-v4-content .form-detail .form-checkbox .text {
   font-weight: 700;
-  color: #3786bd;
+  color: #040404;
   text-decoration: underline;
 }
 .form-v4-content .form-detail .register {
-  background: #3786bd;
+  background: #040404;
   border-top-left-radius: 5px;
   border-bottom-right-radius: 5px;
   width: 130px;
