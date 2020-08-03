@@ -128,6 +128,12 @@
                         </a>
                     </li>
                     <li *ngSwitchCase="true">
+                        <a class="dropdown-item" routerLink="account/sessions" routerLinkActive="active" (click)="collapseNavbar()">
+                            <fa-icon icon="cloud" [fixedWidth]="true"></fa-icon>
+                            <span jhiTranslate="global.menu.account.sessions">Sessions</span>
+                        </a>
+                    </li>
+                    <li *ngSwitchCase="true">
                         <a class="dropdown-item" (click)="logout()" id="logout">
                             <fa-icon icon="sign-out-alt" [fixedWidth]="true"></fa-icon>
                             <span jhiTranslate="global.menu.account.logout">Sign out</span>

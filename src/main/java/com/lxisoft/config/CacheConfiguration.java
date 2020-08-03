@@ -51,6 +51,8 @@ public class CacheConfiguration {
             createCache(cm, com.lxisoft.domain.User.class.getName());
             createCache(cm, com.lxisoft.domain.Authority.class.getName());
             createCache(cm, com.lxisoft.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.lxisoft.domain.PersistentToken.class.getName());
+            createCache(cm, com.lxisoft.domain.User.class.getName() + ".persistentTokens");
             // jhipster-needle-ehcache-add-entry
         };
     }

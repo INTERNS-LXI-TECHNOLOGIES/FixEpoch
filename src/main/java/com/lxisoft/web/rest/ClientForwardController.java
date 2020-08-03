@@ -14,12 +14,4 @@ public class ClientForwardController {
     public String forward() {
         return "forward:/";
     }
-
-    @GetMapping(value = "/barbour-shop-firms")
-    public String getPage()
-    {
-        return "barbour-shop-firms";
-    }
-
-
 }

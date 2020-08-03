@@ -10,7 +10,7 @@
     "packageName": "com.lxisoft",
     "packageFolder": "com/lxisoft",
     "serverPort": "8080",
-    "authenticationType": "jwt",
+    "authenticationType": "session",
     "cacheProvider": "ehcache",
     "enableHibernateCache": true,
     "websocket": false,
@@ -38,6 +38,7 @@
     "enableTranslation": true,
     "nativeLanguage": "en",
     "languages": ["en"],
-    "blueprints": []
+    "blueprints": [],
+    "rememberMeKey": "57d489e9541f9d537da74c417d5d5b8b47b44f181d7f831b95481c5715e66e7ce2d3fdc779b0ea9848da36ea92265500083c"
   }
 }

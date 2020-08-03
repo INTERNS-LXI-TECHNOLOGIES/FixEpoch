@@ -97,17 +97,13 @@ jhipster:
     allowed-origins: '*'
     allowed-methods: '*'
     allowed-headers: '*'
-    exposed-headers: 'Authorization,Link,X-Total-Count'
+    exposed-headers: 'Link,X-Total-Count'
     allow-credentials: true
     max-age: 1800
   security:
-    authentication:
-      jwt:
-        # This token must be encoded using Base64 and be at least 256 bits long (you can type `openssl rand -base64 64` on your command line to generate a 512 bits one)
-        base64-secret: YzIyZjg1MDIwOTg4ZTczZWNmMGZmMDcxYmZmODNkOTYxODVhZDY2YzQ0OTY0MTMxYTliMzViM2IyZDhlMTY2ZjBkOGJkYWY0MGY5NjYzZjI5ODliMWM5ZDVkYzllYTZiZTA5MTkwN2Q5YWQxMDE2ZGM2NTI3OTJmMzcwNWEwZDQ=
-        # Token is valid 24 hours
-        token-validity-in-seconds: 86400
-        token-validity-in-seconds-for-remember-me: 2592000
+    remember-me:
+      # security key (this key should be unique for your application, and kept secret)
+      key: 57d489e9541f9d537da74c417d5d5b8b47b44f181d7f831b95481c5715e66e7ce2d3fdc779b0ea9848da36ea92265500083c
   mail: # specific JHipster mail property, for standard properties see MailProperties
     base-url: http://127.0.0.1:8080
   metrics:
