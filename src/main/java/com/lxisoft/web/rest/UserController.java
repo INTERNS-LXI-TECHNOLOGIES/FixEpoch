@@ -1,8 +1,12 @@
 package com.lxisoft.web.rest;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class UserController {
@@ -52,12 +56,19 @@ public class UserController {
     }
 
     @GetMapping(value = "/authentication")
-    public Boolean authentication(){
-       if(SecurityContextHolder.getContext() == null){
-           return true;
-       }
+    @ResponseBody
+    public ResponseEntity<String> authentication(){
+    		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+    		boolean hasRole = authentication.getAuthorities().stream()
+			          .anyMatch(r -> r.getAuthority().equals("ROLE_ADMIN"));
+
+    if(hasRole) {
+    	return new ResponseEntity<String>(HttpStatus.OK);
+    }
        else {
-           return false;
+
+           return new ResponseEntity<String>(HttpStatus.FORBIDDEN);
+
        }
     }
 
