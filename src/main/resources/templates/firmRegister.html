@@ -21,27 +21,27 @@
 
         <div class="container">
             <h2>Register Your Firm </h2>
-            <form method="POST" id="signup-form" class="signup-form">
+            <form method="POST" id="signup-form" class="signup-form" >
                 <h3>
                     <span class="title_text">Owner Infomation</span>
                 </h3>
                 <fieldset>
                     <div class="fieldset-content">
                         <div class="form-group">
-                            <label for="username" class="form-label">Owner Name</label>
-                            <input type="text" name="username" id="username" placeholder="User Name" />
+                            <label for="ownername" class="form-label">Owner Name</label>
+                            <input type="text" name="ownername" id="ownername" placeholder="Owner Name" required/>
                         </div>
                         <div class="form-group">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="email" name="email" id="email" placeholder="Your Email" />
+                            <label for="owneremail" class="form-label">Email</label>
+                            <input type="email" name="owneremail" id="owneremail" placeholder="Your Email" required/>
                         </div>
                         <div class="form-group">
                             <label for="phno" class="form-label">Phone Number</label>
-                            <input type="number" name="phoneno" id="phno" placeholder="Your Phone Number" />
+                            <input type="tel" name="phoneno" id="phno" pattern="^\d{10}$" placeholder="Your Phone Number" required/>
                         </div>
                         <div class="form-group form-password">
                             <label for="password" class="form-label">Password</label>
-                            <input type="password" name="password" id="password" data-indicator="pwindicator" />
+                            <input type="password" name="password" id="password" data-indicator="pwindicator" required/>
                             <div id="pwindicator">
                                 <div class="bar-strength">
                                     <div class="bar-process">
@@ -73,33 +73,28 @@
                     <div class="fieldset-content">
                         <div class="form-group">
                             <label for="firmname" class="form-label">Firm name</label>
-                            <input type="text" name="firm_name" id="firmname" placeholder="Firm Name" />
+                            <input type="text" name="firm_name" id="firmname" placeholder="Firm Name" required/>
                         </div>
 
                         <div class="form-group">
                             <label for="firmemail" class="form-label">Firm Email</label>
-                            <input type="email" name="firm-email" id="firmemail" placeholder="Firm Email" />
-                        </div>
-
-                        <div class="form-group">
-                            <label for="firmphno" class="form-label">Phone Number</label>
-                            <input type="number" name="firm-phno" id="firmphno" placeholder="Phone Number" />
+                            <input type="email" name="firm-email" id="firmemail" placeholder="Firm Email" required/>
                         </div>
 
                         <div class="form-group">
                             <label for="firmAddress" class="form-label">Address</label>
-                            <input type="text" name="address" id="firmAddress" placeholder="Address" />
+                            <input type="text" name="address" id="firmAddress" placeholder="Address" required/>
                         </div>
 
                         <div class="form-group">
                             <label for="pinno" class="form-label">Pin</label>
-                            <input type="text" name="pin_no" id="pinno" placeholder="Pin Number" style="width: 200px;" />
+                            <input type="text" name="pin_no" id="pinno" placeholder="Pin Number" required style="width: 200px;" />
                         </div>
 
 
                         <div class="form-select">
                             <label for="category" class="form-label">Category</label>
-                            <select name="country" id="category">
+                            <select name="country" id="category" required>
                                 <option value="">Category</option>
                                 <option value="Barbershop">Barbershop</option>
                                 <option value="Hospital">Hospital</option>
@@ -191,6 +186,10 @@
     <script src="content/vendor/minimalist-picker/dobpicker.js"></script>
     <script src="content/vendor/jquery.pwstrength/jquery.pwstrength.js"></script>
     <script src="content/js/registerFirm/main.js"></script>
+    <script type="text/javascript">
+
+
+    </script>
 </body>
 
 </html>
