@@ -94,6 +94,7 @@ textarea {
   -webkit-appearance: unset !important;
   -o-appearance: unset !important;
   -ms-appearance: unset !important;
+  color: #000;
 }
 
 input::-webkit-outer-spin-button,
