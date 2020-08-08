@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy"
+content="connect-src http://localhost:8080;">
     <title>BarberShop</title>
     <title>Colorlib Alotan Barber Shop Template</title>
     <meta charset="utf-8">
@@ -327,7 +328,7 @@
         <div class="row justify-content-center align-items-center intro">
             <div class="col-md-8 text-center element-animate">
                 <h2 class="mb-4"><span>Appoint a Haircut Today and</span> Get 25% discount</h2>
-                <p><a onclick="openForm()" class="btn btn-black">Make an Appointment</a></p>
+                <p><a onclick="checkIfUserIsLoggedIn()" class="btn btn-black">Make an Appointment</a></p>
             </div>
         </div>
     </div>
@@ -417,6 +418,88 @@
     </div>
 </div>
 
+<!--Start Appointment-->
+<div class="form-popup" id="popup2">
+    <div id="transparent-div"></div>
+    <div class="form-v4-content" style="height: 66%;">
+        <div class="form-left">
+            <h2 style="color: aliceblue;">APPOINTMENT</h2>
+            <p class="text-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Et molestie ac feugiat sed. Diam volutpat commodo.</p>
+            <p class="text-2"><span>Eu ultrices:</span> Vitae auctor eu augue ut. Malesuada nunc vel risus commodo viverra. Praesent elementum facilisis leo vel.</p>
+            <div class="form-left-last">
+                <input  type="button" onclick="toggleForm('myform','myform2')" name="account" class="account" value="Have An Account">
+            </div>
+        </div>
+
+        <form  class="form-detail" action="#" method="post" id="myform2">
+            <span onclick="closeForm()" class="close">&times</span>
+            <h2>LOGIN</h2>
+            <br>
+            <Div>
+                <label for="user_name">User Name</label>
+                <input type="text" id="user_name">
+            </Div>
+            <br>
+            <br>
+            <div>
+                <label for="login_password">Password</label>
+                <input type="text" id="login_password">
+            </div>
+            <br>
+            <div class="form-checkbox">
+                <label class="container"><p>Remember Me</p>
+                    <input type="checkbox" name="checkbox">
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+            <br>
+            <br>
+            <div class="form-row-last" style="padding-left: 102px;">
+                <input type="submit" name="Login" class="register" value="login">
+            </div>
+        </form>
+
+        <form class="form-detail" action="#" method="post" id="myform">
+            <span onclick="closeForm()" class="close">&times</span>
+            <h2>REGISTER FORM</h2>
+            <div class="form-group">
+                <div class="form-row form-row-1">
+                    <label for="first_name">First Name</label>
+                    <input pattern="/^[a-zA-Z ]{2,30}$/" type="text" name="first_name" id="first_name" class="input-text">
+                </div>
+                <div class="form-row form-row-1">
+                    <label for="last_name">Last Name</label>
+                    <input type="text" name="last_name" id="last_name" class="input-text">
+                </div>
+            </div>
+            <div class="form-row">
+                <label for="your_email">Your Email</label>
+                <input type="text" name="your_email" id="your_email" class="input-text" required pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}">
+            </div>
+            <div class="form-group">
+                <div class="form-row form-row-1 ">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" class="input-text" required>
+                </div>
+                <div class="form-row form-row-1">
+                    <label for="comfirm_password">Comfirm Password</label>
+                    <input type="password" name="comfirm_password" id="comfirm_password" class="input-text" required>
+                </div>
+            </div>
+            <div class="form-checkbox">
+                <label class="container"><p>I agree to the <a href="#" class="text">Terms and Conditions</a></p>
+                    <input type="checkbox" name="checkbox">
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+            <div class="form-row-last" style="padding-left: 102px;">
+                <input type="submit" name="register" class="register" value="Register">
+            </div>
+        </form>
+    </div>
+</div>
+<!--End Appointment-->
+
 <!--Start Footer-->
 
 <footer class="site-footer">
@@ -498,6 +581,10 @@
 <script src="http://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
 <script src="content/js/login/login.js"></script>
 <style>
+
+#popup2{
+display:none;
+}
     #myform2 {
         display:none;
     }
@@ -528,19 +615,31 @@
     }
     }
 
-    function checkIfUserIsLoggedIn(){
+ function checkIfUserIsLoggedIn(){
 
-    //var url = 'http://loclhost:8080/
+        var url = 'http://localhost:8080/authentication'
 
-    var xmlHttp = new XMLHttpRequest();
-    xmlHttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
+        var xmlHttp = new XMLHttpRequest();
 
+        xmlHttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                    console.log('>>>>>>>>>>>>>>>');
+           		document.getElementById("popup2").style.display = 'block';
+            }
+            else if(this.readyState == 4 && this.status == 403) {
+            document.getElementById("popupForm").style.display = 'block';
+            console.log('HAHAHAHHAA');
+
+            }
+    //        else {
+  //          console.log('Error Unable to Connect to Server');
+//            }
+        };
+        xmlHttp.open("GET", url, true);
+        xmlHttp.setRequestHeader("withCredentials",true);
+        xmlHttp.send();
     }
-};
-xmlHttp.open("GET", "", true);
-xmlHttp.send();
-    }
+
 
 //==>> validation Script starts
 
