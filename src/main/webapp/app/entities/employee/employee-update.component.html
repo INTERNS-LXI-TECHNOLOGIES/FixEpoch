@@ -1,0 +1,138 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-employee-heading" jhiTranslate="fixEpochApp.employee.home.createOrEditLabel">Create or edit a Employee</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="fixEpochApp.employee.firstName" for="field_firstName">First Name</label>
+                    <input type="text" class="form-control" name="firstName" id="field_firstName"
+                           formControlName="firstName"/>
+                    <div *ngIf="editForm.get('firstName')!.invalid && (editForm.get('firstName')!.dirty || editForm.get('firstName')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('firstName')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('firstName')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 20 }">
+                        This field cannot be longer than 20 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="fixEpochApp.employee.lastName" for="field_lastName">Last Name</label>
+                    <input type="text" class="form-control" name="lastName" id="field_lastName"
+                           formControlName="lastName"/>
+                    <div *ngIf="editForm.get('lastName')!.invalid && (editForm.get('lastName')!.dirty || editForm.get('lastName')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('lastName')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('lastName')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 20 }">
+                        This field cannot be longer than 20 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="fixEpochApp.employee.employeImage" for="field_employeImage">Employe Image</label>
+                    <div>
+                        <img [src]="'data:' + editForm.get('employeImageContentType')!.value + ';base64,' + editForm.get('employeImage')!.value" style="max-height: 100px;" *ngIf="editForm.get('employeImage')!.value" alt="employee image"/>
+                        <div *ngIf="editForm.get('employeImage')!.value" class="form-text text-danger clearfix">
+                            <span class="pull-left">{{ editForm.get('employeImageContentType')!.value }}, {{ byteSize(editForm.get('employeImage')!.value) }}</span>
+                            <button type="button" (click)="clearInputImage('employeImage', 'employeImageContentType', 'file_employeImage')" class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon icon="times"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_employeImage" (change)="setFileData($event, 'employeImage', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="employeImage" id="field_employeImage"
+                           formControlName="employeImage"/>
+                    <input type="hidden" class="form-control" name="employeImageContentType" id="field_employeImageContentType"
+                           formControlName="employeImageContentType" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="fixEpochApp.employee.email" for="field_email">Email</label>
+                    <input type="text" class="form-control" name="email" id="field_email"
+                           formControlName="email"/>
+                    <div *ngIf="editForm.get('email')!.invalid && (editForm.get('email')!.dirty || editForm.get('email')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('email')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('email')?.errors?.pattern" jhiTranslate="entity.validation.pattern" [translateValues]="{ pattern: 'Email' }">
+                            This field should follow pattern for "Email".
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="fixEpochApp.employee.phone" for="field_phone">Phone</label>
+                    <input type="text" class="form-control" name="phone" id="field_phone"
+                           formControlName="phone"/>
+                    <div *ngIf="editForm.get('phone')!.invalid && (editForm.get('phone')!.dirty || editForm.get('phone')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('phone')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('phone')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 11 }">
+                        This field cannot be longer than 11 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('phone')?.errors?.pattern" jhiTranslate="entity.validation.pattern" [translateValues]="{ pattern: 'Phone' }">
+                            This field should follow pattern for "Phone".
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="fixEpochApp.employee.registerdEmployeeId" for="field_registerdEmployeeId">Registerd Employee Id</label>
+                    <input type="text" class="form-control" name="registerdEmployeeId" id="field_registerdEmployeeId"
+                           formControlName="registerdEmployeeId"/>
+                    <div *ngIf="editForm.get('registerdEmployeeId')!.invalid && (editForm.get('registerdEmployeeId')!.dirty || editForm.get('registerdEmployeeId')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('registerdEmployeeId')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 5 }">
+                        This field cannot be longer than 5 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="fixEpochApp.employee.firm" for="field_firm">Firm</label>
+                    <select class="form-control" id="field_firm" name="firm" formControlName="firmId">
+                        <option *ngIf="!editForm.get('firmId')!.value" [ngValue]="null" selected></option>
+                        <option [ngValue]="firmOption.id" *ngFor="let firmOption of firms; trackBy: trackById">{{ firmOption.id }}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('firmId')!.invalid && (editForm.get('firmId')!.dirty || editForm.get('firmId')!.touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('firmId')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

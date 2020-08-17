@@ -53,6 +53,26 @@ public class CacheConfiguration {
             createCache(cm, com.lxisoft.domain.User.class.getName() + ".authorities");
             createCache(cm, com.lxisoft.domain.PersistentToken.class.getName());
             createCache(cm, com.lxisoft.domain.User.class.getName() + ".persistentTokens");
+            createCache(cm, com.lxisoft.domain.Customer.class.getName());
+            createCache(cm, com.lxisoft.domain.Customer.class.getName() + ".firms");
+            createCache(cm, com.lxisoft.domain.Employee.class.getName());
+            createCache(cm, com.lxisoft.domain.Category.class.getName());
+            createCache(cm, com.lxisoft.domain.Category.class.getName() + ".firms");
+            createCache(cm, com.lxisoft.domain.Firm.class.getName());
+            createCache(cm, com.lxisoft.domain.Firm.class.getName() + ".providedServices");
+            createCache(cm, com.lxisoft.domain.Firm.class.getName() + ".appointments");
+            createCache(cm, com.lxisoft.domain.Firm.class.getName() + ".employees");
+            createCache(cm, com.lxisoft.domain.Firm.class.getName() + ".timeslots");
+            createCache(cm, com.lxisoft.domain.ProvidedService.class.getName());
+            createCache(cm, com.lxisoft.domain.TimeSlot.class.getName());
+            createCache(cm, com.lxisoft.domain.TimeSlot.class.getName() + ".firms");
+            createCache(cm, com.lxisoft.domain.Appointment.class.getName());
+            createCache(cm, com.lxisoft.domain.UserExtra.class.getName());
+            createCache(cm, com.lxisoft.domain.UserExtra.class.getName() + ".appointments");
+            createCache(cm, com.lxisoft.domain.Address.class.getName());
+            createCache(cm, com.lxisoft.domain.PostelCode.class.getName());
+            createCache(cm, com.lxisoft.domain.City.class.getName());
+            createCache(cm, com.lxisoft.domain.State.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

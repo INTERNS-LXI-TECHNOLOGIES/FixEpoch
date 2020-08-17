@@ -1,0 +1,10 @@
+{
+  "fixEpochApp": {
+    "AppointmentVerifiedStatus": {
+      "null": "",
+      "APPROVED": "APPROVED",
+      "PENDING": "PENDING",
+      "REJECTED": "REJECTED"
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "fixEpochApp": {
+    "firm": {
+      "home": {
+        "title": "Firms",
+        "createLabel": "Create a new Firm",
+        "createOrEditLabel": "Create or edit a Firm",
+        "notFound": "No Firms found"
+      },
+      "created": "A new Firm is created with identifier {{ param }}",
+      "updated": "A Firm is updated with identifier {{ param }}",
+      "deleted": "A Firm is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Firm {{ id }}?"
+      },
+      "detail": {
+        "title": "Firm"
+      },
+      "name": "Name",
+      "description": "Description",
+      "image": "Image",
+      "address": "Address",
+      "providedService": "Provided Service",
+      "appointments": "Appointments",
+      "employee": "Employee",
+      "timeslot": "Timeslot",
+      "category": "Category",
+      "customer": "Customer"
+    }
+  }
+}

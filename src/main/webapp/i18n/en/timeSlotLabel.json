@@ -1,0 +1,10 @@
+{
+  "fixEpochApp": {
+    "TimeSlotLabel": {
+      "null": "",
+      "MORNING": "MORNING",
+      "AFTERNOON": "AFTERNOON",
+      "EVENING": "EVENING"
+    }
+  }
+}

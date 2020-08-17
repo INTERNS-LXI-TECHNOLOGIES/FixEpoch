@@ -1,0 +1,40 @@
+{
+  "name": "UserExtra",
+  "fields": [
+    {
+      "fieldName": "phone",
+      "fieldType": "String",
+      "fieldValidateRules": ["unique", "pattern", "maxlength"],
+      "fieldValidateRulesPattern": "^\\d+$",
+      "fieldValidateRulesMaxlength": "11"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "address",
+      "otherEntityRelationshipName": "userExtra",
+      "relationshipValidateRules": "required",
+      "relationshipName": "address",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "appointment",
+      "otherEntityRelationshipName": "userExtra",
+      "relationshipName": "appointment"
+    }
+  ],
+  "changelogDate": "20200817095117",
+  "entityTableName": "user_extra",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

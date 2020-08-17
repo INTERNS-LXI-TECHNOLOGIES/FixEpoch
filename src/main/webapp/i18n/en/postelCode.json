@@ -1,0 +1,22 @@
+{
+  "fixEpochApp": {
+    "postelCode": {
+      "home": {
+        "title": "Postel Codes",
+        "createLabel": "Create a new Postel Code",
+        "createOrEditLabel": "Create or edit a Postel Code",
+        "notFound": "No Postel Codes found"
+      },
+      "created": "A new Postel Code is created with identifier {{ param }}",
+      "updated": "A Postel Code is updated with identifier {{ param }}",
+      "deleted": "A Postel Code is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Postel Code {{ id }}?"
+      },
+      "detail": {
+        "title": "Postel Code"
+      },
+      "postelCode": "Postel Code"
+    }
+  }
+}

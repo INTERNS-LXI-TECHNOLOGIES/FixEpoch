@@ -1,0 +1,23 @@
+{
+  "name": "City",
+  "fields": [
+    {
+      "fieldName": "district",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "30"
+    }
+  ],
+  "relationships": [],
+  "changelogDate": "20200817095417",
+  "entityTableName": "city",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

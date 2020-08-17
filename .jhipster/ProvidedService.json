@@ -1,0 +1,37 @@
+{
+  "name": "ProvidedService",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "50"
+    },
+    {
+      "fieldName": "serviceImage",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "firm",
+      "otherEntityRelationshipName": "providedService",
+      "relationshipValidateRules": "required",
+      "relationshipName": "firm",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200817094817",
+  "entityTableName": "provided_service",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

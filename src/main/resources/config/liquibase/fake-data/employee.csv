@@ -1,0 +1,10 @@
+id;first_name;last_name;employe_image;employe_image_content_type;email;phone;registerd_employee_id;firm_id
+1;Lola;Rodriguez;../fake-data/blob/hipster.png;image/png;"VsP@iqT.iHfAxh@P.DeNk3fasMr@f.ULKH";"585393";Games;1
+2;Unique;MacGyver;../fake-data/blob/hipster.png;image/png;"h@wQ.jMHBxt.9@PipjM.XiLv";"120";New Z;2
+3;Johann;Willms;../fake-data/blob/hipster.png;image/png;"3UCk0@.kop.wU";"5009";Rusti;3
+4;Eusebio;Feil;../fake-data/blob/hipster.png;image/png;"";"104";Nebra;4
+5;Graciela;Hansen;../fake-data/blob/hipster.png;image/png;"pkZ@oyq.CHKenQ@K.WwfjU6T94@ox51b.UqC@7TSP.Nbb@5.hB";"201";gener;5
+7;Gerard;Medhurst;../fake-data/blob/hipster.png;image/png;"%_V0iX@H3aKe0.fPek@BE.ftDSB_6_@O6eKn.bqb1k@W.ZZuTcsTB@pZoGO.dh";"9";;7
+8;Roger;McLaughlin;../fake-data/blob/hipster.png;image/png;"Zwlm4@kh1yq.lhSVXw@RWo.MBgnLtq0yc@jdqcZ.Wxywz@JuU6gF.AIkS";"995";sexy;8
+9;Bell;Boehm;../fake-data/blob/hipster.png;image/png;"a0.Rpy@UdgHt0.XJTEGC@YFD.PqCZXS";"023";green;9
+10;Carey;Mraz;../fake-data/blob/hipster.png;image/png;"6.E@YiB.tkUtBoP.1@Ma5tKh.RKtTUz_DaWO@azK.UQFvjw";"373968";encod;10
