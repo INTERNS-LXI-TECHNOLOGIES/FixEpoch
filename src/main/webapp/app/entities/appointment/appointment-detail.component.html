@@ -1,0 +1,64 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="appointment">
+            <h2><span jhiTranslate="fixEpochApp.appointment.detail.title">Appointment</span> {{ appointment.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="fixEpochApp.appointment.date">Date</span></dt>
+                <dd>
+                    <span>{{ appointment.date }}</span>
+                </dd>
+                <dt><span jhiTranslate="fixEpochApp.appointment.appointmentStatus">Appointment Status</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'fixEpochApp.AppointmentVerifiedStatus.' + appointment.appointmentStatus }}">{{ appointment.appointmentStatus }}</span>
+                </dd>
+                <dt><span jhiTranslate="fixEpochApp.appointment.timeSlot">Time Slot</span></dt>
+                <dd>
+                    <div *ngIf="appointment.timeSlotId">
+                        <a [routerLink]="['/time-slot', appointment.timeSlotId, 'view']">{{ appointment.timeSlotId }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="fixEpochApp.appointment.employee">Employee</span></dt>
+                <dd>
+                    <div *ngIf="appointment.employeeId">
+                        <a [routerLink]="['/employee', appointment.employeeId, 'view']">{{ appointment.employeeId }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="fixEpochApp.appointment.providedService">Provided Service</span></dt>
+                <dd>
+                    <div *ngIf="appointment.providedServiceId">
+                        <a [routerLink]="['/provided-service', appointment.providedServiceId, 'view']">{{ appointment.providedServiceId }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="fixEpochApp.appointment.firm">Firm</span></dt>
+                <dd>
+                    <div *ngIf="appointment.firmId">
+                        <a [routerLink]="['/firm', appointment.firmId, 'view']">{{ appointment.firmId }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="fixEpochApp.appointment.userExtra">User Extra</span></dt>
+                <dd>
+                    <div *ngIf="appointment.userExtraId">
+                        <a [routerLink]="['/user-extra', appointment.userExtraId, 'view']">{{ appointment.userExtraId }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/appointment', appointment.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

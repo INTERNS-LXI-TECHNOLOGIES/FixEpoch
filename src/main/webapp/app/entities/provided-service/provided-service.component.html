@@ -1,0 +1,84 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="fixEpochApp.providedService.home.title">Provided Services</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-provided-service" [routerLink]="['/provided-service/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="fixEpochApp.providedService.home.createLabel">
+            Create a new Provided Service
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="providedServices?.length === 0">
+        <span jhiTranslate="fixEpochApp.providedService.home.notFound">No providedServices found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="providedServices && providedServices.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="name"><span jhiTranslate="fixEpochApp.providedService.name">Name</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="serviceImage"><span jhiTranslate="fixEpochApp.providedService.serviceImage">Service Image</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="firmId"><span jhiTranslate="fixEpochApp.providedService.firm">Firm</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let providedService of providedServices ;trackBy: trackId">
+                    <td><a [routerLink]="['/provided-service', providedService.id, 'view']">{{ providedService.id }}</a></td>
+                    <td>{{ providedService.name }}</td>
+                    <td>
+                        <a *ngIf="providedService.serviceImage" (click)="openFile(providedService.serviceImageContentType, providedService.serviceImage)">
+                            <img [src]="'data:' + providedService.serviceImageContentType + ';base64,' + providedService.serviceImage" style="max-height: 30px;" alt="providedService image"/>
+                        </a>
+                        <span *ngIf="providedService.serviceImage">{{ providedService.serviceImageContentType }}, {{ byteSize(providedService.serviceImage) }}</span>
+                    </td>
+                    <td>
+                        <div *ngIf="providedService.firmId">
+                            <a [routerLink]="['/firm', providedService.firmId , 'view']" >{{ providedService.firmId }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/provided-service', providedService.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/provided-service', providedService.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(providedService)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="providedServices && providedServices.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

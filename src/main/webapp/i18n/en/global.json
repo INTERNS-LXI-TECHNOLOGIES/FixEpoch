@@ -7,6 +7,18 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entities",
+        "customer": "Customer",
+        "employee": "Employee",
+        "category": "Category",
+        "firm": "Firm",
+        "providedService": "Provided Service",
+        "timeSlot": "Time Slot",
+        "appointment": "Appointment",
+        "userExtra": "User Extra",
+        "address": "Address",
+        "postelCode": "Postel Code",
+        "city": "City",
+        "state": "State",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

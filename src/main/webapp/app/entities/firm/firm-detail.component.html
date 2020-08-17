@@ -1,0 +1,67 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="firm">
+            <h2><span jhiTranslate="fixEpochApp.firm.detail.title">Firm</span> {{ firm.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="fixEpochApp.firm.name">Name</span></dt>
+                <dd>
+                    <span>{{ firm.name }}</span>
+                </dd>
+                <dt><span jhiTranslate="fixEpochApp.firm.description">Description</span></dt>
+                <dd>
+                    <span>{{ firm.description }}</span>
+                </dd>
+                <dt><span jhiTranslate="fixEpochApp.firm.image">Image</span></dt>
+                <dd>
+                    <div *ngIf="firm.image">
+                        <a (click)="openFile(firm.imageContentType, firm.image)">
+                            <img [src]="'data:' + firm.imageContentType + ';base64,' + firm.image" style="max-width: 100%;" alt="firm image"/>
+                        </a>
+                        {{ firm.imageContentType }}, {{ byteSize(firm.image) }}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="fixEpochApp.firm.address">Address</span></dt>
+                <dd>
+                    <div *ngIf="firm.addressId">
+                        <a [routerLink]="['/address', firm.addressId, 'view']">{{ firm.addressId }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="fixEpochApp.firm.timeslot">Timeslot</span></dt>
+                <dd>
+                    <span *ngFor="let timeslot of firm.timeslots; let last = last">
+                        <a [routerLink]="['/time-slot', timeslot?.id, 'view']">{{ timeslot.id }}</a>{{ last ? '' : ', ' }}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="fixEpochApp.firm.category">Category</span></dt>
+                <dd>
+                    <div *ngIf="firm.categoryId">
+                        <a [routerLink]="['/category', firm.categoryId, 'view']">{{ firm.categoryId }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="fixEpochApp.firm.customer">Customer</span></dt>
+                <dd>
+                    <div *ngIf="firm.customerId">
+                        <a [routerLink]="['/customer', firm.customerId, 'view']">{{ firm.customerId }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/firm', firm.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

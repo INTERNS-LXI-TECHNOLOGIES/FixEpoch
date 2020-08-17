@@ -14,4 +14,12 @@ public class ClientForwardController {
     public String forward() {
         return "forward:/";
     }
+
+    @GetMapping(value="/registerFirm")
+    public String registerFirm()
+    {
+    	return "firmRegister";
+    }
+
+
 }

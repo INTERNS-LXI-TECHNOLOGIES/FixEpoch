@@ -1,0 +1,127 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-appointment-heading" jhiTranslate="fixEpochApp.appointment.home.createOrEditLabel">Create or edit a Appointment</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="fixEpochApp.appointment.date" for="field_date">Date</label>
+                    <div class="input-group">
+                        <input id="field_date" type="text" class="form-control" name="date" ngbDatepicker #dateDp="ngbDatepicker" formControlName="date"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
+                    <div *ngIf="editForm.get('date')!.invalid && (editForm.get('date')!.dirty || editForm.get('date')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('date')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="fixEpochApp.appointment.appointmentStatus" for="field_appointmentStatus">Appointment Status</label>
+                    <select class="form-control" name="appointmentStatus" formControlName="appointmentStatus" id="field_appointmentStatus">
+                        <option value="APPROVED">{{ 'fixEpochApp.AppointmentVerifiedStatus.APPROVED' | translate }}</option>
+                        <option value="PENDING">{{ 'fixEpochApp.AppointmentVerifiedStatus.PENDING' | translate }}</option>
+                        <option value="REJECTED">{{ 'fixEpochApp.AppointmentVerifiedStatus.REJECTED' | translate }}</option>
+                    </select>
+                    <div *ngIf="editForm.get('appointmentStatus')!.invalid && (editForm.get('appointmentStatus')!.dirty || editForm.get('appointmentStatus')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('appointmentStatus')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="fixEpochApp.appointment.timeSlot" for="field_timeSlot">Time Slot</label>
+                    <select class="form-control" id="field_timeSlot" name="timeSlot" formControlName="timeSlotId">
+                        <option *ngIf="!editForm.get('timeSlotId')!.value" [ngValue]="null" selected></option>
+                        <option [ngValue]="timeSlotOption.id" *ngFor="let timeSlotOption of timeslots; trackBy: trackById">{{ timeSlotOption.id }}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('timeSlotId')!.invalid && (editForm.get('timeSlotId')!.dirty || editForm.get('timeSlotId')!.touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('timeSlotId')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="fixEpochApp.appointment.employee" for="field_employee">Employee</label>
+                    <select class="form-control" id="field_employee" name="employee" formControlName="employeeId">
+                        <option *ngIf="!editForm.get('employeeId')!.value" [ngValue]="null" selected></option>
+                        <option [ngValue]="employeeOption.id" *ngFor="let employeeOption of employees; trackBy: trackById">{{ employeeOption.id }}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('employeeId')!.invalid && (editForm.get('employeeId')!.dirty || editForm.get('employeeId')!.touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('employeeId')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="fixEpochApp.appointment.providedService" for="field_providedService">Provided Service</label>
+                    <select class="form-control" id="field_providedService" name="providedService" formControlName="providedServiceId">
+                        <option *ngIf="!editForm.get('providedServiceId')!.value" [ngValue]="null" selected></option>
+                        <option [ngValue]="providedServiceOption.id" *ngFor="let providedServiceOption of providedservices; trackBy: trackById">{{ providedServiceOption.id }}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('providedServiceId')!.invalid && (editForm.get('providedServiceId')!.dirty || editForm.get('providedServiceId')!.touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('providedServiceId')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="fixEpochApp.appointment.firm" for="field_firm">Firm</label>
+                    <select class="form-control" id="field_firm" name="firm" formControlName="firmId">
+                        <option *ngIf="!editForm.get('firmId')!.value" [ngValue]="null" selected></option>
+                        <option [ngValue]="firmOption.id" *ngFor="let firmOption of firms; trackBy: trackById">{{ firmOption.id }}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('firmId')!.invalid && (editForm.get('firmId')!.dirty || editForm.get('firmId')!.touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('firmId')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="fixEpochApp.appointment.userExtra" for="field_userExtra">User Extra</label>
+                    <select class="form-control" id="field_userExtra" name="userExtra" formControlName="userExtraId">
+                        <option *ngIf="!editForm.get('userExtraId')!.value" [ngValue]="null" selected></option>
+                        <option [ngValue]="userExtraOption.id" *ngFor="let userExtraOption of userextras; trackBy: trackById">{{ userExtraOption.id }}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('userExtraId')!.invalid && (editForm.get('userExtraId')!.dirty || editForm.get('userExtraId')!.touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('userExtraId')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

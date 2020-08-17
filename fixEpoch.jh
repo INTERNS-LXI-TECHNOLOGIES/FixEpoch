@@ -1,0 +1,106 @@
+
+
+entity Customer{
+	firstName String required maxlength(20)
+    lastName String required maxlength(20)
+    customerImage ImageBlob
+    email String unique required pattern(/^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6})*$/)
+    phone String unique required pattern(/^\d+$/) maxlength(11)
+}
+
+entity Employee{
+	firstName String required maxlength(20)
+    lastName String required maxlength(20)
+    employeImage ImageBlob
+    email String unique required pattern(/^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6})*$/)
+    phone String unique required pattern(/^\d+$/) maxlength(11)
+    registerdEmployeeId String unique maxlength(5)
+}
+
+entity Category{
+	name String required maxlength(30)
+    description String maxlength(100)
+    categoryImage ImageBlob
+}
+
+entity Firm{
+	name String required maxlength(30)
+    description String
+    image ImageBlob
+}
+
+entity ProvidedService{
+    name String required maxlength(50)
+    serviceImage ImageBlob
+}
+
+entity TimeSlot{
+	startTime String
+    endTime String
+    timeSlotLabel TimeSlotLabel
+}
+entity Appointment{
+	date LocalDate required
+    appointmentStatus AppointmentVerifiedStatus required
+}
+
+entity UserExtra{
+	phone String unique pattern(/^\d+$/) maxlength(11)
+}
+
+entity Address{
+ 	locationAddressLineOne String maxlength(90),
+    locationAddressLineTwo String maxlength(90),
+    landMark String maxlength(90)
+}
+
+entity PostelCode{
+	postelCode String
+}
+
+entity City{
+	district String maxlength(30)
+}
+entity State{
+    state String maxlength(30)
+}
+
+enum AppointmentVerifiedStatus{
+	APPROVED, PENDING, REJECTED
+}
+
+enum TimeSlotLabel {
+	MORNING, AFTERNOON, EVENING
+}
+
+relationship OneToOne{
+    UserExtra{ address required } to Address{ userExtra required },
+    Firm{ address required } to Address,
+    Customer{ address required } to Address
+}
+
+relationship OneToMany{
+    Category{ firms } to Firm{ category required },
+    Firm{ providedService } to ProvidedService{ firm required },
+	Firm{ appointments } to Appointment{ firm required },
+    Customer{ firm } to Firm{ customer required},
+    UserExtra{ appointment } to Appointment{ userExtra required },
+    Firm{ employee } to Employee{ firm required }
+}
+
+relationship ManyToOne{
+	Address{ postalCode required } to PostelCode,
+    Address{ city required } to City,
+    Address{ state required } to State,
+    Appointment{ timeSlot required } to TimeSlot,
+    Appointment{ employee required} to Employee,
+    Appointment{ providedService required } to ProvidedService
+}
+
+relationship ManyToMany{
+	Firm{ timeslot required } to TimeSlot{ firm required }
+}
+
+paginate * with pagination
+dto * with mapstruct
+service all with serviceImpl

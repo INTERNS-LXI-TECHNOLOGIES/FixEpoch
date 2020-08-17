@@ -1,20 +1,19 @@
 function openForm() {
         document.getElementById("popupForm").style.display = "block";
         document.getElementById("transparent-div").style.display = "block";
-         //document.getElementsByTagName('body')[0].style.overflow='hidden';
         disableBodyScroll();
         }
 function closeForm() {
-  document.getElementById("popupForm").style.display = "none";
-  //document.getElementsByTagName('body')[0].style.overflow='scroll';
-enableBodyScroll();
+        document.getElementById("popupForm").style.display = "none";
+        document.getElementById("transparent-div").style.display = "none";
+        enableBodyScroll();
 }
 
-var modal = document.getElementById("popupForm");
+let modal = document.getElementById("popupForm");
 
-var btn = document.getElementById("myBtn");
+let btn = document.getElementById("myBtn");
 
-var span = document.getElementsByClassName("close")[0];
+let span = document.getElementsByClassName("close")[0];
 
 
 
@@ -22,13 +21,14 @@ span.onclick = function() {
   modal.style.display = "none";
 }
 
-var disableBodyScroll = function(){
+let disableBodyScroll = function(){
     window.body_scroll_pos = $(window).scrollTop(); // write page scroll position in a global variable
     $('body').css('overflow-y','hidden');
 }
 
 // Run this function when you close your popup:
-var enableBodyScroll = function(){
+let enableBodyScroll = function(){
     $('body').css('overflow-y','scroll');
     $(window).scrollTop(window.body_scroll_pos); // restore page scroll position from the global variable
 }
+

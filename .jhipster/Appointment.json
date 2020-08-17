@@ -1,0 +1,69 @@
+{
+  "name": "Appointment",
+  "fields": [
+    {
+      "fieldName": "date",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "appointmentStatus",
+      "fieldType": "AppointmentVerifiedStatus",
+      "fieldValues": "APPROVED,PENDING,REJECTED",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "timeSlot",
+      "otherEntityRelationshipName": "appointment",
+      "relationshipValidateRules": "required",
+      "relationshipName": "timeSlot",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "employee",
+      "otherEntityRelationshipName": "appointment",
+      "relationshipValidateRules": "required",
+      "relationshipName": "employee",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "providedService",
+      "otherEntityRelationshipName": "appointment",
+      "relationshipValidateRules": "required",
+      "relationshipName": "providedService",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "firm",
+      "otherEntityRelationshipName": "appointments",
+      "relationshipValidateRules": "required",
+      "relationshipName": "firm",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "userExtra",
+      "otherEntityRelationshipName": "appointment",
+      "relationshipValidateRules": "required",
+      "relationshipName": "userExtra",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200817095017",
+  "entityTableName": "appointment",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

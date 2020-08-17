@@ -1,0 +1,68 @@
+{
+  "name": "Address",
+  "fields": [
+    {
+      "fieldName": "locationAddressLineOne",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "90"
+    },
+    {
+      "fieldName": "locationAddressLineTwo",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "90"
+    },
+    {
+      "fieldName": "landMark",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "90"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "postelCode",
+      "otherEntityRelationshipName": "address",
+      "relationshipValidateRules": "required",
+      "relationshipName": "postalCode",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "city",
+      "otherEntityRelationshipName": "address",
+      "relationshipValidateRules": "required",
+      "relationshipName": "city",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "state",
+      "otherEntityRelationshipName": "address",
+      "relationshipValidateRules": "required",
+      "relationshipName": "state",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "userExtra",
+      "otherEntityRelationshipName": "address",
+      "relationshipValidateRules": "required",
+      "relationshipName": "userExtra",
+      "ownerSide": false
+    }
+  ],
+  "changelogDate": "20200817095217",
+  "entityTableName": "address",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}
