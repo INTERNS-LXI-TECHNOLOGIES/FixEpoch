@@ -1,0 +1,21 @@
+{
+  "name": "PostelCode",
+  "fields": [
+    {
+      "fieldName": "postelCode",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [],
+  "changelogDate": "20200817095317",
+  "entityTableName": "postel_code",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

@@ -1,0 +1,11 @@
+id;first_name;last_name;customer_image;customer_image_content_type;email;phone;address_id
+1;Chelsey;Wyman;../fake-data/blob/hipster.png;image/png;"VomPO@o8g.mTvY@sNZ.gv";"1222";1
+2;Hazle;Rutherford;../fake-data/blob/hipster.png;image/png;"";"00506";2
+3;Jackeline;Schaden;../fake-data/blob/hipster.png;image/png;"L3QfY@nCofY.bE";"91";3
+4;Owen;Huels;../fake-data/blob/hipster.png;image/png;"FN5LKY@hSN.regknMf2kJl@CIkK.SmmXERc@ox00NI.eIWZ";"2";4
+5;Guadalupe;Wehner;../fake-data/blob/hipster.png;image/png;"_J@lrQ.cGjQBnn3r@Svjbmr.fbKOpPd3m_G@S30bN.lBnRXESSG@52RQg0.AwVIy79e@4i.UBjvM";"477787";5
+6;Clair;Macejkovic;../fake-data/blob/hipster.png;image/png;"6@1bkmt.PDLDyQUl@2J.tI2OFrs@aHV48.xhfH1@Eke.bFXPzN";"654573";6
+7;Ayana;McDermott;../fake-data/blob/hipster.png;image/png;"w2%@OG-r6.NEGh";"552";7
+8;Noble;McGlynn;../fake-data/blob/hipster.png;image/png;".aUeC@1RbGag.OnWa%1B@bCuaNJ.oZyv";"44485";8
+9;Jonatan;Quitzon;../fake-data/blob/hipster.png;image/png;"YY%1I@j9yhw.pkYV";"409178";9
+10;Maude;Klocko;../fake-data/blob/hipster.png;image/png;"H49@7.nqrTz@tHSPL.yVaOS@OI.XAL";"686";10

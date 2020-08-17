@@ -1,0 +1,98 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="fixEpochApp.firm.home.title">Firms</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-firm" [routerLink]="['/firm/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="fixEpochApp.firm.home.createLabel">
+            Create a new Firm
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="firms?.length === 0">
+        <span jhiTranslate="fixEpochApp.firm.home.notFound">No firms found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="firms && firms.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="name"><span jhiTranslate="fixEpochApp.firm.name">Name</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="description"><span jhiTranslate="fixEpochApp.firm.description">Description</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="image"><span jhiTranslate="fixEpochApp.firm.image">Image</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="addressId"><span jhiTranslate="fixEpochApp.firm.address">Address</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="categoryId"><span jhiTranslate="fixEpochApp.firm.category">Category</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="customerId"><span jhiTranslate="fixEpochApp.firm.customer">Customer</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let firm of firms ;trackBy: trackId">
+                    <td><a [routerLink]="['/firm', firm.id, 'view']">{{ firm.id }}</a></td>
+                    <td>{{ firm.name }}</td>
+                    <td>{{ firm.description }}</td>
+                    <td>
+                        <a *ngIf="firm.image" (click)="openFile(firm.imageContentType, firm.image)">
+                            <img [src]="'data:' + firm.imageContentType + ';base64,' + firm.image" style="max-height: 30px;" alt="firm image"/>
+                        </a>
+                        <span *ngIf="firm.image">{{ firm.imageContentType }}, {{ byteSize(firm.image) }}</span>
+                    </td>
+                    <td>
+                        <div *ngIf="firm.addressId">
+                            <a [routerLink]="['/address', firm.addressId , 'view']" >{{ firm.addressId }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="firm.categoryId">
+                            <a [routerLink]="['/category', firm.categoryId , 'view']" >{{ firm.categoryId }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="firm.customerId">
+                            <a [routerLink]="['/customer', firm.customerId , 'view']" >{{ firm.customerId }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/firm', firm.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/firm', firm.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(firm)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="firms && firms.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

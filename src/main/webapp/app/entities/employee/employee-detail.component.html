@@ -1,0 +1,61 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="employee">
+            <h2><span jhiTranslate="fixEpochApp.employee.detail.title">Employee</span> {{ employee.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="fixEpochApp.employee.firstName">First Name</span></dt>
+                <dd>
+                    <span>{{ employee.firstName }}</span>
+                </dd>
+                <dt><span jhiTranslate="fixEpochApp.employee.lastName">Last Name</span></dt>
+                <dd>
+                    <span>{{ employee.lastName }}</span>
+                </dd>
+                <dt><span jhiTranslate="fixEpochApp.employee.employeImage">Employe Image</span></dt>
+                <dd>
+                    <div *ngIf="employee.employeImage">
+                        <a (click)="openFile(employee.employeImageContentType, employee.employeImage)">
+                            <img [src]="'data:' + employee.employeImageContentType + ';base64,' + employee.employeImage" style="max-width: 100%;" alt="employee image"/>
+                        </a>
+                        {{ employee.employeImageContentType }}, {{ byteSize(employee.employeImage) }}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="fixEpochApp.employee.email">Email</span></dt>
+                <dd>
+                    <span>{{ employee.email }}</span>
+                </dd>
+                <dt><span jhiTranslate="fixEpochApp.employee.phone">Phone</span></dt>
+                <dd>
+                    <span>{{ employee.phone }}</span>
+                </dd>
+                <dt><span jhiTranslate="fixEpochApp.employee.registerdEmployeeId">Registerd Employee Id</span></dt>
+                <dd>
+                    <span>{{ employee.registerdEmployeeId }}</span>
+                </dd>
+                <dt><span jhiTranslate="fixEpochApp.employee.firm">Firm</span></dt>
+                <dd>
+                    <div *ngIf="employee.firmId">
+                        <a [routerLink]="['/firm', employee.firmId, 'view']">{{ employee.firmId }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/employee', employee.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

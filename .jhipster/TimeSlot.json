@@ -1,0 +1,40 @@
+{
+  "name": "TimeSlot",
+  "fields": [
+    {
+      "fieldName": "startTime",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "endTime",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "timeSlotLabel",
+      "fieldType": "TimeSlotLabel",
+      "fieldValues": "MORNING,AFTERNOON,EVENING"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "firm",
+      "otherEntityRelationshipName": "timeslot",
+      "relationshipValidateRules": "required",
+      "relationshipName": "firm",
+      "otherEntityField": "id",
+      "ownerSide": false
+    }
+  ],
+  "changelogDate": "20200817094917",
+  "entityTableName": "time_slot",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

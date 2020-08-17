@@ -1,0 +1,45 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="providedService">
+            <h2><span jhiTranslate="fixEpochApp.providedService.detail.title">Provided Service</span> {{ providedService.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="fixEpochApp.providedService.name">Name</span></dt>
+                <dd>
+                    <span>{{ providedService.name }}</span>
+                </dd>
+                <dt><span jhiTranslate="fixEpochApp.providedService.serviceImage">Service Image</span></dt>
+                <dd>
+                    <div *ngIf="providedService.serviceImage">
+                        <a (click)="openFile(providedService.serviceImageContentType, providedService.serviceImage)">
+                            <img [src]="'data:' + providedService.serviceImageContentType + ';base64,' + providedService.serviceImage" style="max-width: 100%;" alt="providedService image"/>
+                        </a>
+                        {{ providedService.serviceImageContentType }}, {{ byteSize(providedService.serviceImage) }}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="fixEpochApp.providedService.firm">Firm</span></dt>
+                <dd>
+                    <div *ngIf="providedService.firmId">
+                        <a [routerLink]="['/firm', providedService.firmId, 'view']">{{ providedService.firmId }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/provided-service', providedService.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
