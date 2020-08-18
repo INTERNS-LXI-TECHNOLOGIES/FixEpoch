@@ -1,18 +1,29 @@
 package com.lxisoft.web.rest;
 
+import com.lxisoft.domain.Firm;
+import com.lxisoft.service.FirmService;
+import com.lxisoft.service.dto.FirmDTO;
+import com.lxisoft.service.impl.FirmServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.Optional;
 
 @Controller
 public class UserController {
+
+    @Autowired
+    FirmServiceImpl firmService;
 
     @GetMapping(value = "/home")
     public String home(){
@@ -100,5 +111,13 @@ public class UserController {
         HttpSession session = request.getSession();
         session.invalidate();
         return "BarberShop";
+    }
+
+    @GetMapping(value = "/getFirm/{id}")
+    public ModelAndView getFirm(@PathVariable("id") Long id , ModelAndView modelAndView){
+        Optional<FirmDTO> firmDTO = firmService.findOne(id);
+        modelAndView.addObject("firm_Detail",firmDTO);
+        modelAndView.setViewName("BarberShop");
+        return modelAndView;
     }
 }
