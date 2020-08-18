@@ -129,6 +129,7 @@ content="connect-src http://localhost:8080;">
 
 
 <section class="site-section">
+    <form th:object="${firm_Detail}">
     <div class="container">
         <div class="row">
             <div class="col-md-4 pr-5">
@@ -149,7 +150,7 @@ content="connect-src http://localhost:8080;">
                             <a href="#" class="img-bg" style="background-image: url('content/images/img_2.jpg')">
                                 <div class="text">
                                     <span class="icon custom-icon flaticon-scissors"></span>
-                                    <h2></h2>
+                                    <h2 th:text="*{name}"></h2>
                                     <p>Read More</p>
                                 </div>
                             </a>
@@ -246,6 +247,7 @@ content="connect-src http://localhost:8080;">
             </div>
         </div>
     </div>
+    </form>
 </section>
 <!-- END section -->
 

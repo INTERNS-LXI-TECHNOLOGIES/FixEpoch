@@ -2,6 +2,7 @@ package com.lxisoft.web.rest;
 
 import com.lxisoft.service.dto.FirmDTO;
 import com.lxisoft.service.impl.FirmServiceImpl;
+import org.bouncycastle.math.raw.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -38,8 +39,12 @@ public class UserController {
     }
 
     @GetMapping(value = "/getFirmDetails")
-    public String getFirmDetails(){
-        return "BarberShop";
+    public ModelAndView getFirmDetails(ModelAndView modelAndView) {
+        Optional<FirmDTO> firmDTO = firmService.findOne(43l);
+        FirmDTO firmDTO1 = firmDTO.get();
+        modelAndView.addObject("firm_Detail",firmDTO1);
+        modelAndView.setViewName("BarberShop");
+        return modelAndView;
     }
 
     @GetMapping(value = "/hairStyle")
