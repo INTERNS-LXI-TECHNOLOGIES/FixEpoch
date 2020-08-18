@@ -1,7 +1,5 @@
 package com.lxisoft.web.rest;
 
-import com.lxisoft.domain.Firm;
-import com.lxisoft.service.FirmService;
 import com.lxisoft.service.dto.FirmDTO;
 import com.lxisoft.service.impl.FirmServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -116,7 +114,8 @@ public class UserController {
     @GetMapping(value = "/getFirm/{id}")
     public ModelAndView getFirm(@PathVariable("id") Long id , ModelAndView modelAndView){
         Optional<FirmDTO> firmDTO = firmService.findOne(id);
-        modelAndView.addObject("firm_Detail",firmDTO);
+        FirmDTO firmDTO1 = firmDTO.get();
+        modelAndView.addObject("firm_Detail",firmDTO1);
         modelAndView.setViewName("BarberShop");
         return modelAndView;
     }
