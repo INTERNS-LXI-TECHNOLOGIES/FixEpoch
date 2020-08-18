@@ -18,7 +18,7 @@ entity Employee{
 }
 
 entity Category{
-	name String required maxlength(30)
+    name String required maxlength(30)
     description String maxlength(100)
     categoryImage ImageBlob
 }
