@@ -1,8 +1,14 @@
 package com.lxisoft.web.rest;
 
+<<<<<<< HEAD
+import com.lxisoft.domain.Category;
+import com.lxisoft.service.dto.CategoryDTO;
+import com.lxisoft.service.impl.CategoryServiceImpl;
+=======
 import com.lxisoft.service.dto.FirmDTO;
 import com.lxisoft.service.impl.FirmServiceImpl;
 import org.bouncycastle.math.raw.Mod;
+>>>>>>> 95f03bb12902be0ac367de3d2528a972e537c110
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,12 +28,25 @@ import java.util.Optional;
 public class UserController {
 
     @Autowired
+<<<<<<< HEAD
+    private CategoryServiceImpl categoryService;
+
+=======
     FirmServiceImpl firmService;
+>>>>>>> 95f03bb12902be0ac367de3d2528a972e537c110
 
     @GetMapping(value = "/home")
-    public String home(){
-        return "home";
+    public ModelAndView home()
+    {
+        ModelAndView modelAndView = new ModelAndView();
+        Optional<CategoryDTO>  categoryDTO = categoryService.findOne((long)11);
+        CategoryDTO categoryDTO1 = categoryDTO.get();
+        modelAndView.addObject("categoryDetail",categoryDTO1);
+        modelAndView.setViewName("home");
+        return modelAndView;
+
     }
+
     @GetMapping(value = "/contact1")
     public String contact1(){
         return "contact1";
