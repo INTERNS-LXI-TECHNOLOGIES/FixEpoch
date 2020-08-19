@@ -1,5 +1,9 @@
 package com.lxisoft.web.rest;
 
+import com.lxisoft.domain.Category;
+import com.lxisoft.service.dto.CategoryDTO;
+import com.lxisoft.service.impl.CategoryServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -7,17 +11,31 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.Optional;
 
 @Controller
 public class UserController {
 
+    @Autowired
+    private CategoryServiceImpl categoryService;
+
+
     @GetMapping(value = "/home")
-    public String home(){
-        return "home";
+    public ModelAndView home()
+    {
+        ModelAndView modelAndView = new ModelAndView();
+        Optional<CategoryDTO>  categoryDTO = categoryService.findOne((long)11);
+        CategoryDTO categoryDTO1 = categoryDTO.get();
+        modelAndView.addObject("categoryDetail",categoryDTO1);
+        modelAndView.setViewName("home");
+        return modelAndView;
+
     }
+
     @GetMapping(value = "/contact1")
     public String contact1(){
         return "contact1";

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymleaf.org">
 <head>
 <!-- basic -->
 <meta charset="utf-8">
@@ -376,7 +376,7 @@
 </div>
 <!-- end section -->
 <!-- section -->
-<div class="section padding_layout_1">
+<div class="section padding_layout_1" th:object="${categoryDetail}">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
@@ -394,7 +394,7 @@
           <div class="product_img"> <a href="index"><img class="img-responsive" src="content/images/home/images/barber.png" alt=""></a> </div>
           <div class="product_detail_btm">
             <div class="center">
-              <h4>beauty parlor</a></h4>
+              <h4><input type="text" th:field="*{categoryDetail.name}" /></h4>
             </div>
             <div class="starratin">
               <div class="center"> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> </div>
