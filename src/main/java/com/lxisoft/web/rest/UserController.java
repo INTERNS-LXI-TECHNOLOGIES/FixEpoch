@@ -3,9 +3,17 @@ package com.lxisoft.web.rest;
 
 import com.lxisoft.config.ImageUtil;
 import com.lxisoft.service.dto.CategoryDTO;
+
+import com.lxisoft.domain.Category;
+import com.lxisoft.service.dto.CategoryDTO;
+import com.lxisoft.service.impl.CategoryServiceImpl;
+
 import com.lxisoft.service.dto.FirmDTO;
 import com.lxisoft.service.impl.CategoryServiceImpl;
 import com.lxisoft.service.impl.FirmServiceImpl;
+
+import org.bouncycastle.math.raw.Mod;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,6 +36,9 @@ public class UserController {
     @Autowired
     private CategoryServiceImpl categoryService;
 
+
+    @Autowired
+
     FirmServiceImpl firmService;
 
     @GetMapping(value = "/home")
@@ -40,7 +51,6 @@ public class UserController {
         modelAndView.addObject("imgUtil",new ImageUtil());
         modelAndView.setViewName("home");
         return modelAndView;
-
     }
 
     @GetMapping(value = "/contact1")
@@ -55,9 +65,8 @@ public class UserController {
 
     @GetMapping(value = "/getFirmDetails")
     public ModelAndView getFirmDetails(ModelAndView modelAndView) {
-        Optional<FirmDTO> firmDTO = firmService.findOne(43l);
-        FirmDTO firmDTO1 = firmDTO.get();
-        modelAndView.addObject("firm_Detail",firmDTO1);
+        FirmDTO firmDTO = firmService.findOne(43l).get();
+        modelAndView.addObject("firm_Detail",firmDTO);
         modelAndView.setViewName("BarberShop");
         return modelAndView;
     }
