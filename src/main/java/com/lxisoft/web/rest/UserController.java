@@ -40,9 +40,8 @@ public class UserController {
 
     @GetMapping(value = "/getFirmDetails")
     public ModelAndView getFirmDetails(ModelAndView modelAndView) {
-        Optional<FirmDTO> firmDTO = firmService.findOne(43l);
-        FirmDTO firmDTO1 = firmDTO.get();
-        modelAndView.addObject("firm_Detail",firmDTO1);
+        FirmDTO firmDTO = firmService.findOne(43l).get();
+        modelAndView.addObject("firm_Detail",firmDTO);
         modelAndView.setViewName("BarberShop");
         return modelAndView;
     }
