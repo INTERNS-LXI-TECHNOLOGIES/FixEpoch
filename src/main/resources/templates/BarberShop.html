@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta http-equiv="Content-Security-Policy"
 content="connect-src http://localhost:8080;">
@@ -32,7 +32,7 @@ content="connect-src http://localhost:8080;">
 
 </head>
 
-<body id="body">
+<body id="body" >
 <header role="banner">
 
     <nav class="navbar navbar-expand-md navbar-dark bg-light">
@@ -73,6 +73,7 @@ content="connect-src http://localhost:8080;">
 <!-- END header -->
 
 <section class="site-hero overlay" data-stellar-background-ratio="0.5" style="background-image: url(content/images/big_image_1.jpg);">
+    <!--<img th:src="*{'data:image/png;base64,'+image}" th:alt="">-->
     <div class="container">
         <div class="row align-items-center site-hero-inner justify-content-center">
             <div class="col-md-8 text-center">
@@ -128,6 +129,7 @@ content="connect-src http://localhost:8080;">
 
 
 <section class="site-section">
+    <form th:object="${firm_Detail}">
     <div class="container">
         <div class="row">
             <div class="col-md-4 pr-5">
@@ -148,7 +150,7 @@ content="connect-src http://localhost:8080;">
                             <a href="#" class="img-bg" style="background-image: url('content/images/img_2.jpg')">
                                 <div class="text">
                                     <span class="icon custom-icon flaticon-scissors"></span>
-                                    <h2>Haircutting</h2>
+                                    <h2 th:text="*{name}"></h2>
                                     <p>Read More</p>
                                 </div>
                             </a>
@@ -245,6 +247,7 @@ content="connect-src http://localhost:8080;">
             </div>
         </div>
     </div>
+    </form>
 </section>
 <!-- END section -->
 
@@ -535,6 +538,7 @@ content="connect-src http://localhost:8080;">
     </div>
 
 </footer>
+
 <!-- END footer -->
 
 <!-- loader -->

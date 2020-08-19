@@ -1,8 +1,14 @@
 package com.lxisoft.web.rest;
 
+<<<<<<< HEAD
 import com.lxisoft.domain.Category;
 import com.lxisoft.service.dto.CategoryDTO;
 import com.lxisoft.service.impl.CategoryServiceImpl;
+=======
+import com.lxisoft.service.dto.FirmDTO;
+import com.lxisoft.service.impl.FirmServiceImpl;
+import org.bouncycastle.math.raw.Mod;
+>>>>>>> 95f03bb12902be0ac367de3d2528a972e537c110
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,6 +16,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -21,8 +28,12 @@ import java.util.Optional;
 public class UserController {
 
     @Autowired
+<<<<<<< HEAD
     private CategoryServiceImpl categoryService;
 
+=======
+    FirmServiceImpl firmService;
+>>>>>>> 95f03bb12902be0ac367de3d2528a972e537c110
 
     @GetMapping(value = "/home")
     public ModelAndView home()
@@ -47,8 +58,12 @@ public class UserController {
     }
 
     @GetMapping(value = "/getFirmDetails")
-    public String getFirmDetails(){
-        return "BarberShop";
+    public ModelAndView getFirmDetails(ModelAndView modelAndView) {
+        Optional<FirmDTO> firmDTO = firmService.findOne(43l);
+        FirmDTO firmDTO1 = firmDTO.get();
+        modelAndView.addObject("firm_Detail",firmDTO1);
+        modelAndView.setViewName("BarberShop");
+        return modelAndView;
     }
 
     @GetMapping(value = "/hairStyle")
@@ -118,5 +133,14 @@ public class UserController {
         HttpSession session = request.getSession();
         session.invalidate();
         return "BarberShop";
+    }
+
+    @GetMapping(value = "/getFirm/{id}")
+    public ModelAndView getFirm(@PathVariable("id") Long id , ModelAndView modelAndView){
+        Optional<FirmDTO> firmDTO = firmService.findOne(id);
+        FirmDTO firmDTO1 = firmDTO.get();
+        modelAndView.addObject("firm_Detail",firmDTO1);
+        modelAndView.setViewName("BarberShop");
+        return modelAndView;
     }
 }
