@@ -12,8 +12,12 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.xnio.streams.LimitedInputStream;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 /**
  * Service Implementation for managing {@link ProvidedService}.
@@ -85,5 +89,18 @@ public class ProvidedServiceServiceImpl implements ProvidedServiceService {
     public void delete(Long id) {
         log.debug("Request to delete ProvidedService : {}", id);
         providedServiceRepository.deleteById(id);
+    }
+
+    @Transactional(readOnly = true)
+    public List<ProvidedService> findAllByFirmId(Long id){
+        log.debug("Request to get All ProvidedService By Firm Id : {}", id);
+        List<ProvidedService> providedService = providedServiceRepository.findAll();
+        List<ProvidedService> providedServiceList = new ArrayList<>();
+        for (int i=0;i<providedService.size();i++){
+            if(providedService.get(i).getFirm().getId() == id){
+                providedServiceList.add(providedService.get(i));
+            }
+        }
+        return providedServiceList;
     }
 }

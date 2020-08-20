@@ -2,15 +2,17 @@ package com.lxisoft.web.rest;
 
 
 import com.lxisoft.config.ImageUtil;
-import com.lxisoft.service.dto.CategoryDTO;
+import com.lxisoft.domain.Address;
+import com.lxisoft.domain.ProvidedService;
+import com.lxisoft.repository.ProvidedServiceRepository;
+import com.lxisoft.service.ProvidedServiceService;
+import com.lxisoft.service.dto.*;
 
 import com.lxisoft.domain.Category;
 import com.lxisoft.service.dto.CategoryDTO;
-import com.lxisoft.service.impl.CategoryServiceImpl;
+import com.lxisoft.service.impl.*;
 
-import com.lxisoft.service.dto.FirmDTO;
 import com.lxisoft.service.impl.CategoryServiceImpl;
-import com.lxisoft.service.impl.FirmServiceImpl;
 
 import org.bouncycastle.math.raw.Mod;
 
@@ -28,6 +30,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -36,10 +39,17 @@ public class UserController {
     @Autowired
     private CategoryServiceImpl categoryService;
 
+    @Autowired
+    FirmServiceImpl firmService;
 
     @Autowired
+    ProvidedServiceServiceImpl providedServiceService;
 
-    FirmServiceImpl firmService;
+    @Autowired
+    AddressServiceImpl addressService;
+
+    @Autowired
+    CustomerServiceImpl customerService;
 
     @GetMapping(value = "/home")
     public ModelAndView home()
@@ -66,7 +76,14 @@ public class UserController {
     @GetMapping(value = "/getFirmDetails")
     public ModelAndView getFirmDetails(ModelAndView modelAndView) {
         FirmDTO firmDTO = firmService.findOne(43l).get();
+        List<ProvidedService> providedServices = providedServiceService.findAllByFirmId(43l);
+        CustomerDTO customerDTO = customerService.findOne(firmDTO.getCustomerId()).get();
+        AddressDTO addressDTO = addressService.findOne(firmDTO.getAddressId()).get();
+        modelAndView.addObject("customer",customerDTO);
+        modelAndView.addObject("address",addressDTO);
+        modelAndView.addObject("providedServices",providedServices);
         modelAndView.addObject("firm_Detail",firmDTO);
+        modelAndView.addObject("imgUtil",new ImageUtil());
         modelAndView.setViewName("BarberShop");
         return modelAndView;
     }
