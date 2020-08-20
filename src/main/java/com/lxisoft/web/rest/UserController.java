@@ -2,19 +2,9 @@ package com.lxisoft.web.rest;
 
 
 import com.lxisoft.config.ImageUtil;
-import com.lxisoft.domain.Address;
-import com.lxisoft.domain.ProvidedService;
-import com.lxisoft.repository.ProvidedServiceRepository;
-import com.lxisoft.service.ProvidedServiceService;
+import com.lxisoft.domain.*;
 import com.lxisoft.service.dto.*;
-
-import com.lxisoft.domain.Category;
-import com.lxisoft.service.dto.CategoryDTO;
 import com.lxisoft.service.impl.*;
-
-import com.lxisoft.service.impl.CategoryServiceImpl;
-
-import org.bouncycastle.math.raw.Mod;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,7 +19,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -94,8 +83,13 @@ public class UserController {
     }
 
     @GetMapping(value = "/index")
-    public String index(){
-        return "index";
+    public ModelAndView index(HttpServletRequest request){
+        int cid = Integer.parseInt(request.getParameter("id"));
+        List<Firm> firmsByCategory = firmService.findFirmByCategory(cid);
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("firms",firmsByCategory);
+        modelAndView.setViewName("index");
+        return modelAndView;
     }
 
     @GetMapping(value = "/shopindex")

@@ -377,7 +377,7 @@
 <!-- end section -->
 <!-- section -->
 <div class="section padding_layout_1" >
-    <form th:object="${categoryDetail}">
+    <form th:object="${categoryDetail}" method="post">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
@@ -393,7 +393,7 @@
       <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
           <div class="product_list">
 
-          <div class="product_img"> <a href="index"><img class="img-responsive" th:src="'data:image/jpeg;base64,'+${imgUtil.getImageData(categoryDetail.categoryImage)}" alt=""/></a> </div>
+          <div class="product_img"> <a href="index"> <img class="img-responsive" th:src="'data:image/jpeg;base64,'+${imgUtil.getImageData(categoryDetail.categoryImage)}"  alt=""/></a></div>
           <div class="product_detail_btm">
             <div class="center">
               <h4 th:text="*{name}"></h4>
