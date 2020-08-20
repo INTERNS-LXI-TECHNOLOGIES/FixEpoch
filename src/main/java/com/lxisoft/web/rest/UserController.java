@@ -2,18 +2,11 @@ package com.lxisoft.web.rest;
 
 
 import com.lxisoft.config.ImageUtil;
+import com.lxisoft.domain.Firm;
 import com.lxisoft.service.dto.CategoryDTO;
-
-import com.lxisoft.domain.Category;
-import com.lxisoft.service.dto.CategoryDTO;
-import com.lxisoft.service.impl.CategoryServiceImpl;
-
 import com.lxisoft.service.dto.FirmDTO;
 import com.lxisoft.service.impl.CategoryServiceImpl;
 import com.lxisoft.service.impl.FirmServiceImpl;
-
-import org.bouncycastle.math.raw.Mod;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,7 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -36,10 +29,8 @@ public class UserController {
     @Autowired
     private CategoryServiceImpl categoryService;
 
-
     @Autowired
-
-    FirmServiceImpl firmService;
+    private FirmServiceImpl firmService;
 
     @GetMapping(value = "/home")
     public ModelAndView home()
@@ -77,8 +68,13 @@ public class UserController {
     }
 
     @GetMapping(value = "/index")
-    public String index(){
-        return "index";
+    public ModelAndView index(HttpServletRequest request){
+        int cid = Integer.parseInt(request.getParameter("id"));
+        List<Firm> firmsByCategory = firmService.findFirmByCategory(cid);
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("firms",firmsByCategory);
+        modelAndView.setViewName("index");
+        return modelAndView;
     }
 
     @GetMapping(value = "/shopindex")

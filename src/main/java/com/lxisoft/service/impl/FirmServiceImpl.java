@@ -13,6 +13,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -94,5 +96,20 @@ public class FirmServiceImpl implements FirmService {
     public void delete(Long id) {
         log.debug("Request to delete Firm : {}", id);
         firmRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Firm> findFirmByCategory(int id) {
+
+        List<Firm> firmsList = firmRepository.findAll();
+        List<Firm> firmByCategory = new ArrayList<Firm>();
+        for(int i=0;i<firmsList.size();i++)
+        {
+            if (firmsList.get(i).getCategory().getId() == id)
+            {
+                firmByCategory.add(firmsList.get(i));
+            }
+        }
+        return firmByCategory;
     }
 }
