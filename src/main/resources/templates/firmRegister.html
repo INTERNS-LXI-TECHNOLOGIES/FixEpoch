@@ -22,48 +22,6 @@
         <div class="container">
             <h2>Register Your Firm </h2>
             <form method="POST" id="signup-form" class="signup-form" >
-                <h3>
-                    <span class="title_text">Owner Infomation</span>
-                </h3>
-                <fieldset>
-                    <div class="fieldset-content">
-                        <div class="form-group">
-                            <label for="ownername" class="form-label">Owner Name</label>
-                            <input type="text" name="ownername" id="ownername" placeholder="Owner Name" required/>
-                        </div>
-                        <div class="form-group">
-                            <label for="owneremail" class="form-label">Email</label>
-                            <input type="email" name="owneremail" id="owneremail" placeholder="Your Email" required/>
-                        </div>
-                        <div class="form-group">
-                            <label for="phno" class="form-label">Phone Number</label>
-                            <input type="tel" name="phoneno" id="phno" pattern="^\d{10}$" placeholder="Your Phone Number" required/>
-                        </div>
-                        <div class="form-group form-password">
-                            <label for="password" class="form-label">Password</label>
-                            <input type="password" name="password" id="password" data-indicator="pwindicator" required/>
-                            <div id="pwindicator">
-                                <div class="bar-strength">
-                                    <div class="bar-process">
-                                        <div class="bar"></div>
-                                    </div>
-                                </div>
-                                <div class="label"></div>
-                            </div>
-                        </div>
-                        <!-- <div class="form-group">
-                            <label for="your_avatar" class="form-label">Select avatar</label>
-                            <div class="form-file">
-                                <input type="file" name="your_avatar" id="your_avatar" class="custom-file-input" />
-                                <span id='val'></span>
-                                <span id='button'>Select File</span>
-                            </div>
-                        </div> -->
-                    </div>
-                    <div class="fieldset-footer">
-                        <span>Step 1 of 2</span>
-                    </div>
-                </fieldset>
 
                 <h3>
                     <span class="title_text">Firm Information</span>
@@ -77,8 +35,8 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="firmemail" class="form-label">Firm Email</label>
-                            <input type="email" name="firm-email" id="firmemail" placeholder="Firm Email" required/>
+                            <label for="fileupload" class="form-label">Select Image</label>
+                            <input type="file" name="firm_image" id="fileupload" placeholder="Firm Image" />
                         </div>
 
                         <div class="form-group">
@@ -87,9 +45,24 @@
                         </div>
 
                         <div class="form-group">
+                            <label for="city" class="form-label">City</label>
+                            <input type="text" name="city" id="city" placeholder="City" required style="width: 200px;" />
+                        </div>
+
+
+                        <div class="form-group">
                             <label for="pinno" class="form-label">Pin</label>
                             <input type="text" name="pin_no" id="pinno" placeholder="Pin Number" required style="width: 200px;" />
                         </div>
+
+                        <div class="form-group">
+                            <label for="state" class="form-label">State</label>
+                            <input type="text" name="state" id="state" placeholder="State" required style="width: 200px;" />
+                        </div>
+
+
+
+
 
 
                         <div class="form-select">
@@ -117,7 +90,7 @@
                     </div>
 
                     <div class="fieldset-footer">
-                        <span>Step 2 of 2</span>
+                        <span></span>
                     </div>
 
                 <!-- </fieldset>

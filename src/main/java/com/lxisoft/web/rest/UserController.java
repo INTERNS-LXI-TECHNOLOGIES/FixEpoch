@@ -82,12 +82,12 @@ public class UserController {
         return "hairstyle";
     }
 
-    @GetMapping(value = "/index")
-    public ModelAndView index(HttpServletRequest request){
-        int cid = Integer.parseInt(request.getParameter("id"));
-        List<Firm> firmsByCategory = firmService.findFirmByCategory(cid);
+    @GetMapping(value = "/index/{id}")
+    public ModelAndView index(@PathVariable("id") Long id){
+        List<Firm> firmList = firmService.findFirmByCategory(id);
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("firms",firmsByCategory);
+        modelAndView.addObject("firms",firmList);
+        modelAndView.addObject("imgUtil",new ImageUtil());
         modelAndView.setViewName("index");
         return modelAndView;
     }
@@ -159,4 +159,5 @@ public class UserController {
         modelAndView.setViewName("BarberShop");
         return modelAndView;
     }
+
 }

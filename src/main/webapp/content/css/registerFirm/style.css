@@ -483,7 +483,7 @@ select {
 
 input[type='file'] {
   height: 50px;
-  opacity: 0;
+  opacity: 3;
 }
 
 #val {
@@ -782,7 +782,7 @@ fieldset {
 }
 
 .fieldset-content {
-  height: 465px;
+  height: 650px;
   border-bottom: 1px solid #ebebeb;
   padding-right: 110px;
 }
@@ -883,7 +883,7 @@ fieldset {
 
   .fieldset-content {
     padding-right: 0px;
-    height: 600px;
+    height: 900px;
   }
 
   .form-group,
