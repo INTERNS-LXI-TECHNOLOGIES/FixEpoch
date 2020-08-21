@@ -2,11 +2,10 @@ package com.lxisoft.web.rest;
 
 
 import com.lxisoft.config.ImageUtil;
-import com.lxisoft.domain.Firm;
-import com.lxisoft.service.dto.CategoryDTO;
-import com.lxisoft.service.dto.FirmDTO;
-import com.lxisoft.service.impl.CategoryServiceImpl;
-import com.lxisoft.service.impl.FirmServiceImpl;
+import com.lxisoft.domain.*;
+import com.lxisoft.service.dto.*;
+import com.lxisoft.service.impl.*;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,7 +29,16 @@ public class UserController {
     private CategoryServiceImpl categoryService;
 
     @Autowired
-    private FirmServiceImpl firmService;
+    FirmServiceImpl firmService;
+
+    @Autowired
+    ProvidedServiceServiceImpl providedServiceService;
+
+    @Autowired
+    AddressServiceImpl addressService;
+
+    @Autowired
+    CustomerServiceImpl customerService;
 
     @GetMapping(value = "/home")
     public ModelAndView home()
@@ -57,7 +65,14 @@ public class UserController {
     @GetMapping(value = "/getFirmDetails")
     public ModelAndView getFirmDetails(ModelAndView modelAndView) {
         FirmDTO firmDTO = firmService.findOne(43l).get();
+        List<ProvidedService> providedServices = providedServiceService.findAllByFirmId(43l);
+        CustomerDTO customerDTO = customerService.findOne(firmDTO.getCustomerId()).get();
+        AddressDTO addressDTO = addressService.findOne(firmDTO.getAddressId()).get();
+        modelAndView.addObject("customer",customerDTO);
+        modelAndView.addObject("address",addressDTO);
+        modelAndView.addObject("providedServices",providedServices);
         modelAndView.addObject("firm_Detail",firmDTO);
+        modelAndView.addObject("imgUtil",new ImageUtil());
         modelAndView.setViewName("BarberShop");
         return modelAndView;
     }
