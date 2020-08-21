@@ -99,7 +99,7 @@ public class FirmServiceImpl implements FirmService {
     }
 
     @Override
-    public List<Firm> findFirmByCategory(int id) {
+    public List<Firm> findFirmByCategory(Long id) {
 
         List<Firm> firmsList = firmRepository.findAll();
         List<Firm> firmByCategory = new ArrayList<Firm>();
@@ -112,4 +112,7 @@ public class FirmServiceImpl implements FirmService {
         }
         return firmByCategory;
     }
+
+
+
 }

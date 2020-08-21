@@ -27,4 +27,5 @@ public interface FirmRepository extends JpaRepository<Firm, Long> {
     @Query("select firm from Firm firm left join fetch firm.timeslots where firm.id =:id")
     Optional<Firm> findOneWithEagerRelationships(@Param("id") Long id);
 
+
 }

@@ -393,7 +393,8 @@
       <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
           <div class="product_list">
 
-          <div class="product_img"> <a href="index"> <img class="img-responsive" th:src="'data:image/jpeg;base64,'+${imgUtil.getImageData(categoryDetail.categoryImage)}"  alt=""/></a></div>
+          <div class="product_img">
+              <a th:href="@{/index/{id}(id = 11)}"> <img class="img-responsive" th:src="'data:image/jpeg;base64,'+${imgUtil.getImageData(categoryDetail.categoryImage)}"  alt=""/></a></div>
           <div class="product_detail_btm">
             <div class="center">
               <h4 th:text="*{name}"></h4>

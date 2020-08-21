@@ -53,7 +53,6 @@ public interface FirmService {
      */
     void delete(Long id);
 
-    List<Firm> findFirmByCategory(int id);
-
+    List<Firm> findFirmByCategory(Long id);
 
 }
