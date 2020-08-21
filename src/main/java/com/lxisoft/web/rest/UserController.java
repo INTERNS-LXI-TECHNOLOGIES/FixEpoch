@@ -53,6 +53,11 @@ public class UserController {
         return "about1";
     }
 
+    @GetMapping(value = "/firm")
+    public String firm(){
+        return "firm";
+    }
+
     @GetMapping(value = "/contact")
     public String contact(){
         return "contact";
