@@ -160,4 +160,9 @@ public class UserController {
         return modelAndView;
     }
 
+    @GetMapping(value = "/test")
+    public String testTemplate(){
+        return "TestTemplate";
+    }
+
 }

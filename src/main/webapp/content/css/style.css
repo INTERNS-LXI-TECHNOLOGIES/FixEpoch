@@ -1283,28 +1283,3 @@ textarea.form-control {
     stroke-dashoffset: -136px;
   }
 }
-
-regervation_part {
-  background-color: #30383b;
-  position: relative;
-  z-index: 1;
-}
-
-@media only screen and (max-width: 1200px) and (min-width: 992px) {
-  .section_padding {
-    padding: 80px 0px;
-  }
-}
-
-.regervation_part:after {
-  position: absolute;
-  left: 0;
-  top: 0;
-  content: '';
-  width: 40%;
-  height: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-size: cover;
-}
