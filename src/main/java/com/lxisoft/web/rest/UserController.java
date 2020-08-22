@@ -3,6 +3,7 @@ package com.lxisoft.web.rest;
 
 import com.lxisoft.config.ImageUtil;
 import com.lxisoft.domain.*;
+import com.lxisoft.model.RegistrationModel;
 import com.lxisoft.service.dto.*;
 import com.lxisoft.service.impl.*;
 
@@ -12,9 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -160,4 +159,21 @@ public class UserController {
         return modelAndView;
     }
 
+    @GetMapping(value="/registerFirm")
+    public ModelAndView registerFirm()
+    {
+        RegistrationModel registrationModel = new RegistrationModel();
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("registrationModel",registrationModel);
+        modelAndView.setViewName("firmRegister");
+        return modelAndView;
+    }
+
+    @PostMapping(value = "/firmRegister")
+    public ModelAndView register(@ModelAttribute("registrationModel") RegistrationModel regModel)
+    {
+        ModelAndView modelAndView = new ModelAndView();
+        System.out.println(regModel.getCity().getDistrict());
+        return modelAndView;
+    }
 }

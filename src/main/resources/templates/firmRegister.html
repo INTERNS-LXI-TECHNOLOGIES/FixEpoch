@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -21,7 +21,7 @@
 
         <div class="container">
             <h2>Register Your Firm </h2>
-            <form method="POST" id="signup-form" class="signup-form" >
+            <form method="POST" id="signup-form" th:action="@{/firmRegister}" class="signup-form"  th:object="${registrationModel}">
 
                 <h3>
                     <span class="title_text">Firm Information</span>
@@ -31,33 +31,38 @@
                     <div class="fieldset-content">
                         <div class="form-group">
                             <label for="firmname" class="form-label">Firm name</label>
-                            <input type="text" name="firm_name" id="firmname" placeholder="Firm Name" required/>
+                            <input type="text"  th:field="*{firmName}"  name="firm_name" id="firmname" placeholder="Firm Name"   required/>
                         </div>
 
                         <div class="form-group">
                             <label for="fileupload" class="form-label">Select Image</label>
-                            <input type="file" name="firm_image" id="fileupload" placeholder="Firm Image" />
+                            <input type="file" th:field="*{image}" name="firm_image" id="fileupload" placeholder="Firm Image" />
                         </div>
 
                         <div class="form-group">
-                            <label for="firmAddress" class="form-label">Address</label>
-                            <input type="text" name="address" id="firmAddress" placeholder="Address" required/>
+                            <label for="firmAddressL1" class="form-label">Address</label>
+                            <input type="text" name="addressl2" th:field="*{address.locationAddressLineOne}" id="firmAddressL1" placeholder="Address Line One" required/>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="firmAddressL2" class="form-label"></label>
+                            <input type="text" name="addressl2" th:field="*{address.locationAddressLineTwo}" id="firmAddressL2" placeholder="Address Line Two" required/>
                         </div>
 
                         <div class="form-group">
                             <label for="city" class="form-label">City</label>
-                            <input type="text" name="city" id="city" placeholder="City" required style="width: 200px;" />
+                            <input type="text" name="city" th:field="*{city.district}" id="city" placeholder="City" required style="width: 200px;" />
                         </div>
 
 
                         <div class="form-group">
-                            <label for="pinno" class="form-label">Pin</label>
-                            <input type="text" name="pin_no" id="pinno" placeholder="Pin Number" required style="width: 200px;" />
+                            <label for="pinno" class="form-label">Pin Number</label>
+                            <input type="text" name="pin_no" th:field="*{pin.postelCode}" id="pinno" placeholder="Pin Number" required style="width: 200px;" />
                         </div>
 
                         <div class="form-group">
                             <label for="state" class="form-label">State</label>
-                            <input type="text" name="state" id="state" placeholder="State" required style="width: 200px;" />
+                            <input type="text" name="state" th:field="*{state.state}"   id="state" placeholder="State" required style="width: 200px;" />
                         </div>
 
 
@@ -92,7 +97,7 @@
                     <div class="fieldset-footer">
                         <span></span>
                     </div>
-
+                    <button type="submit">Register</button>
                 <!-- </fieldset>
 
                 <h3>

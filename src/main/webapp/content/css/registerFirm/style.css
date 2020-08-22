@@ -710,7 +710,7 @@ fieldset {
   font-weight: bold;
 }
 
-.actions {
+.actions :disabled {
   position: absolute;
   bottom: 14px;
   width: 100%;
@@ -719,7 +719,7 @@ fieldset {
   /* margin: 0 15px; */
   right: 0;
 }
-.actions ul {
+.actions ul:disabled {
   align-items: center;
   -moz-align-items: center;
   -webkit-align-items: center;
@@ -735,17 +735,17 @@ fieldset {
 .actions ul .disabled {
   display: none;
 }
-.actions ul li {
+.actions ul li :disabled {
   margin-left: 10px;
 }
-.actions ul li:first-child a {
+.actions ul li:first-child a :disabled {
   background: #f8f8f8;
   color: #999;
 }
-.actions ul li:first-child a:hover {
+.actions ul li:first-child a:hover :disabled {
   background-color: #dfdfdf;
 }
-.actions ul li a {
+.actions ul li a :disabled {
   width: 150px;
   height: 50px;
   color: #fff;
@@ -767,7 +767,7 @@ fieldset {
   -o-border-radius: 5px;
   -ms-border-radius: 5px;
 }
-.actions ul li a:hover {
+.actions ul li a:hover :disabled {
   background-color: #148f77;
 }
 
