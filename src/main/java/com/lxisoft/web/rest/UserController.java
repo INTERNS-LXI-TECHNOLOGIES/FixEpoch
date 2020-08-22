@@ -159,6 +159,7 @@ public class UserController {
         return modelAndView;
     }
 
+
     @GetMapping(value="/registerFirm")
     public ModelAndView registerFirm()
     {
@@ -176,4 +177,11 @@ public class UserController {
         System.out.println(regModel.getCity().getDistrict());
         return modelAndView;
     }
+
+    @GetMapping(value = "/test")
+    public String testTemplate(){
+        return "TestTemplate";
+    }
+
+
 }

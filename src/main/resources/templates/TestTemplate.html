@@ -1,15 +1,116 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>TestTemplate</title>
+    <meta http-equiv="Content-Security-Policy"
+          content="connect-src http://localhost:8080;">
+    <title>BarberShop</title>
+    <title>Colorlib Alotan Barber Shop Template</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="content/css/appointment/plugins/jqueryDatePicker/jquery-ui.css" >
+    <link rel="stylesheet" href="content/css/appointment/styles/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="content/css/appointment/main_styles.css" type="text/css">
+
 </head>
 <body>
 
-<form th:object="${firm_Detail}">
+<!--Appointment Starts-->
+<div class="intro">
+    <div class="container">
+        <div class="row">
 
-    <a th:text="${firm_Detail.name}"></a>
-</form>
+            <!-- Intro Content -->
+            <div class="col-lg-6 intro_col">
+                <div class="intro_content">
+                    <div class="section_title_container">
+                        <div class="section_subtitle">This is Dr Pro</div>
+                        <div class="section_title"><h2>Welcome to our Clinic</h2></div>
+                    </div>
+                    <div class="intro_text">
+                        <p>Integer aliquet congue libero, eu gravida odio ultrices ut. Etiam ac erat ut enim maximus accumsan vel ac nisl. Duis feugiat bibendum orci, non elementum urna vestibulum in. Nulla facilisi. Nulla egestas vel lacus sed interdum. Sed mollis, orci elementum eleifend tempor, nunc libero porttitor tellus, vel pharetra metus dolor.</p>
+                    </div>
+                    <div class="milestones">
+                        <div class="row milestones_row">
 
+                            <!-- Milestone -->
+                            <div class="col-md-4 milestone_col">
+                                <div class="milestone">
+                                    <div class="milestone_counter" data-end-value="5000" data-sign-before="+">0</div>
+                                    <div class="milestone_text">Satisfied Patients</div>
+                                </div>
+                            </div>
+
+                            <!-- Milestone -->
+                            <div class="col-md-4 milestone_col">
+                                <div class="milestone">
+                                    <div class="milestone_counter" data-end-value="352">0</div>
+                                    <div class="milestone_text">Face Liftings</div>
+                                </div>
+                            </div>
+
+                            <!-- Milestone -->
+                            <div class="col-md-4 milestone_col">
+                                <div class="milestone">
+                                    <div class="milestone_counter" data-end-value="718">0</div>
+                                    <div class="milestone_text">Injectibles</div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Intro Form -->
+            <div class="col-lg-6 intro_col">
+                <div class="intro_form_container">
+                    <div class="intro_form_title">Make an Appointment</div>
+                    <form action="#" class="intro_form" id="intro_form">
+                        <div class="d-flex flex-row align-items-start justify-content-between flex-wrap">
+                            <input type="text" class="intro_input" placeholder="Your Name" required="required">
+                            <input type="email" class="intro_input" placeholder="Your E-mail" required="required">
+                            <input type="tel" class="intro_input" placeholder="Your Phone" required="required">
+                            <select class="intro_select intro_input" required>
+                                <option disabled="" selected="" value="">Speciality</option>
+                                <option>Speciality 1</option>
+                                <option>Speciality 2</option>
+                                <option>Speciality 3</option>
+                                <option>Speciality 4</option>
+                                <option>Speciality 5</option>
+                            </select>
+                            <select class="intro_select intro_input" required="required">
+                                <option disabled="" selected="" value="">Doctor</option>
+                                <option>Doctor 1</option>
+                                <option>Doctor 2</option>
+                                <option>Doctor 3</option>
+                                <option>Doctor 4</option>
+                                <option>Doctor 5</option>
+                            </select>
+                            <input type="text" id="datepicker" class="intro_input datepicker" placeholder="Date" required="required">
+                        </div>
+                        <button class="button button_1 intro_button trans_200">make an appointment</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!--Appointment ends-->
+<script src="content/js/appointment/custom.js"></script>
+<script src="content/js/appointment/jquery-3.2.1.min.js"></script>
+<script src="content/js/appointment/jquery-ui.js"></script>
+<script src="content/js/appointment/ScrollMagic.min.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+
+<script  type="text/javascript" language="javascript">
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-23581568-13');
+</script>
 </body>
 </html>
