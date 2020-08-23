@@ -1,173 +1,123 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 
 <head>
+    <!-- Required meta tags-->
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="author" content="colorlib.com">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Register Firm</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Colorlib Templates">
+    <meta name="author" content="Colorlib">
+    <meta name="keywords" content="Colorlib Templates">
 
-    <!-- Font Icon -->
-    <link rel="stylesheet" href="content/fonts/registerFirm/material-icon/css/material-design-iconic-font.min.css">
+    <!-- Title Page-->
+    <title>Au Register Forms by Colorlib</title>
 
-    <!-- Main css -->
-    <link rel="stylesheet" href="content/css/registerFirm/style.css">
+    <!-- Icons font CSS-->
+    <link href="content/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="content/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <!-- Font special for pages-->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Vendor CSS-->
+    <link href="content/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="content/vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="content/css/registerFirm/main.css" rel="stylesheet" media="all">
 </head>
 
-<body style="background-image:url('content/images/body-bg.jpg')">
-
-    <div class="main">
-
-        <div class="container">
-            <h2>Register Your Firm </h2>
-            <form method="POST" id="signup-form" th:action="@{/firmRegister}" class="signup-form"  th:object="${registrationModel}">
-
-                <h3>
-                    <span class="title_text">Firm Information</span>
-                </h3>
-                <fieldset>
-
-                    <div class="fieldset-content">
-                        <div class="form-group">
-                            <label for="firmname" class="form-label">Firm name</label>
-                            <input type="text"  th:field="*{firmName}"  name="firm_name" id="firmname" placeholder="Firm Name"   required/>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="fileupload" class="form-label">Select Image</label>
-                            <input type="file" th:field="*{image}" name="firm_image" id="fileupload" placeholder="Firm Image" />
-                        </div>
-
-                        <div class="form-group">
-                            <label for="firmAddressL1" class="form-label">Address</label>
-                            <input type="text" name="addressl2" th:field="*{address.locationAddressLineOne}" id="firmAddressL1" placeholder="Address Line One" required/>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="firmAddressL2" class="form-label"></label>
-                            <input type="text" name="addressl2" th:field="*{address.locationAddressLineTwo}" id="firmAddressL2" placeholder="Address Line Two" required/>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="city" class="form-label">City</label>
-                            <input type="text" name="city" th:field="*{city.district}" id="city" placeholder="City" required style="width: 200px;" />
-                        </div>
-
-
-                        <div class="form-group">
-                            <label for="pinno" class="form-label">Pin Number</label>
-                            <input type="text" name="pin_no" th:field="*{pin.postelCode}" id="pinno" placeholder="Pin Number" required style="width: 200px;" />
-                        </div>
-
-                        <div class="form-group">
-                            <label for="state" class="form-label">State</label>
-                            <input type="text" name="state" th:field="*{state.state}"   id="state" placeholder="State" required style="width: 200px;" />
-                        </div>
-
-
-
-
-
-
-                        <div class="form-select">
-                            <label for="category" class="form-label">Category</label>
-                            <select name="country" id="category" required>
-                                <option value="">Category</option>
-                                <option value="Barbershop">Barbershop</option>
-                                <option value="Hospital">Hospital</option>
-                                <option value="Plumber">Plumber</option>
-                                <option value="Advocate">Advocate</option>
-                            </select>
-                        </div>
-
-                            <!-- <div class="form-radio">
-                                <label for="gender" class="form-label">Gender</label>
-                                <div class="form-radio-item">
-                                    <input type="radio" name="gender" value="male" id="male" checked="checked" />
-                                    <label for="male">Male</label>
-
-                                    <input type="radio" name="gender" value="female" id="female" />
-                                    <label for="female">Female</label>
+<body style="background-image:url('content/images/registerFirm/firmbg.jpeg')">
+    <div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
+        <div class="wrapper wrapper--w680">
+            <div class="card card-4">
+                <div class="card-body">
+                    <h2 class="title">Firm Registration</h2>
+                    <form method="POST">
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">firm name</label>
+                                    <input class="input--style-4" type="text" name="first_name"  required="required">
                                 </div>
                             </div>
-         -->
-                    </div>
-
-                    <div class="fieldset-footer">
-                        <span></span>
-                    </div>
-                    <button type="submit">Register</button>
-                <!-- </fieldset>
-
-                <h3>
-                    <span class="title_text">Payment Details</span>
-                </h3>
-                <fieldset>
-                    <div class="fieldset-content">
-                        <div class="form-radio">
-                            <label for="payment_type">Payment Type</label>
-                            <div class="form-radio-flex">
-                                <input type="radio" name="payment_type" id="payment_visa" value="payment_visa" checked="checked" />
-                                <label for="payment_visa"><img src="images/icon-visa.png" alt=""></label>
-
-                                <input type="radio" name="payment_type" id="payment_master" value="payment_master" />
-                                <label for="payment_master"><img src="images/icon-master.png" alt=""></label>
-
-                                <input type="radio" name="payment_type" id="payment_paypal" value="payment_paypal" />
-                                <label for="payment_paypal"><img src="images/icon-paypal.png" alt=""></label>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="credit_card" class="form-label">Credit Card</label>
-                                <input type="text" name="credit_card" id="credit_card" />
-                            </div>
-                            <div class="form-group">
-                                <label for="cvc" class="form-label">CVC</label>
-                                <input type="text" name="cvc" id="cvc" />
-                            </div>
-                        </div>
-                        <div class="form-date">
-                            <label for="expiry_date">Expiration Date</label>
-                            <div class="form-flex">
-                                <div class="form-date-item">
-                                    <select id="expiry_date" name="expiry_date"></select>
-                                    <span class="select-icon"><i class="zmdi zmdi-chevron-down"></i></span>
-                                </div>
-                                <div class="form-date-item">
-                                    <select id="expiry_year" name="expiry_year"></select>
-                                    <span class="select-icon"><i class="zmdi zmdi-chevron-down"></i></span>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Firm Image</label>
+                                    <input class="input--style-4" type="file" name="fileupload">
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label for="name_of_card" class="form-label">Name of card</label>
-                            <input type="text" name="name_of_card" id="name_of_card" />
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Address Line One</label>
+                                    <input class="input--style-4" type="text" name="Address1" required="required">
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Address Line Two</label>
+                                    <input class="input--style-4" type="text" name="Address2" required="required">
+                                </div>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="fieldset-footer">
-                        <span>Step 3 of 3</span>
-                    </div>-->
-                </fieldset>
-            </form>
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">City</label>
+                                    <input class="input--style-4" type="text" name="city" required="required">
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Pin</label>
+                                    <input class="input--style-4" type="text" name="pin" required="required">
+                                </div>
+                            </div>
+                        </div>
+                         <div class="row row-space">
+                        <div class="col-2">
+                            <div class="input-group">
+                                <div class="input-group">
+                                    <label class="label">State</label>
+                                    <input class="input--style-4" type="text" name="state" required="required">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-2">
+                                <label class="label">Category</label>
+                                <div class="rs-select2 js-select-simple select--no-search">
+                                <select name="subject">
+                                    <option disabled="disabled" selected="selected">Choose Category</option>
+                                    <option>BarberShop</option>
+                                    <option>Plumber</option>
+                                    <option>Hospital</option>
+                                    <option>Advocate</option>
+                                </select>
+                                <div class="select-dropdown"></div>
+                                </div>
+                        </div>
+                         </div>
+                        <div class="p-t-15">
+                            <button class="btn btn--radius-2 btn--blue" type="submit">Register</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-
     </div>
 
-    <!-- JS -->
+    <!-- Jquery JS-->
     <script src="content/vendor/jquery/jquery.min.js"></script>
-    <script src="content/vendor/jquery-validation/dist/jquery.validate.min.js"></script>
-    <script src="content/vendor/jquery-validation/dist/additional-methods.min.js"></script>
-    <script src="content/vendor/jquery-steps/jquery.steps.min.js"></script>
-    <script src="content/vendor/minimalist-picker/dobpicker.js"></script>
-    <script src="content/vendor/jquery.pwstrength/jquery.pwstrength.js"></script>
-    <script src="content/js/registerFirm/main.js"></script>
-    <script type="text/javascript">
+    <!-- Vendor JS-->
+    <script src="content/vendor/select2/select2.min.js"></script>
+    <script src="content/vendor/datepicker/moment.min.js"></script>
+    <script src="content/vendor/datepicker/daterangepicker.js"></script>
 
+    <!-- Main JS-->
+    <script src="content/js/registerFirm/global.js"></script>
 
-    </script>
-</body>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 
 </html>
+<!-- end document-->
