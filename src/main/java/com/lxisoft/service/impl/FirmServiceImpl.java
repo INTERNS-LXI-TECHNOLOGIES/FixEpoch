@@ -1,5 +1,6 @@
 package com.lxisoft.service.impl;
 
+import com.lxisoft.domain.TimeSlot;
 import com.lxisoft.service.FirmService;
 import com.lxisoft.domain.Firm;
 import com.lxisoft.repository.FirmRepository;
@@ -16,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 /**
  * Service Implementation for managing {@link Firm}.
@@ -111,6 +113,12 @@ public class FirmServiceImpl implements FirmService {
             }
         }
         return firmByCategory;
+    }
+
+    public Set<TimeSlot> findAllTimeSlotsByFirmId(Long id){
+        Firm firm = firmRepository.getOne(id);
+        Set<TimeSlot> timeSlotSet = firm.getTimeslots();
+        return timeSlotSet;
     }
 
 

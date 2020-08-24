@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Controller
 public class UserController {
@@ -28,16 +29,19 @@ public class UserController {
     private CategoryServiceImpl categoryService;
 
     @Autowired
-    FirmServiceImpl firmService;
+    private FirmServiceImpl firmService;
 
     @Autowired
-    ProvidedServiceServiceImpl providedServiceService;
+    private ProvidedServiceServiceImpl providedServiceService;
 
     @Autowired
-    AddressServiceImpl addressService;
+    private AddressServiceImpl addressService;
 
     @Autowired
-    CustomerServiceImpl customerService;
+    private CustomerServiceImpl customerService;
+
+    @Autowired
+    private EmployeeServiceImpl employeeService;
 
     @GetMapping(value = "/home")
     public ModelAndView home()
@@ -65,8 +69,12 @@ public class UserController {
     public ModelAndView getFirmDetails(ModelAndView modelAndView) {
         FirmDTO firmDTO = firmService.findOne(43l).get();
         List<ProvidedService> providedServices = providedServiceService.findAllByFirmId(43l);
+        List<Employee> employees =  employeeService.findAllEmployeeByFirmId(43l);
+        Set<TimeSlot> timeSlotSet = firmService.findAllTimeSlotsByFirmId(43l);
         CustomerDTO customerDTO = customerService.findOne(firmDTO.getCustomerId()).get();
         AddressDTO addressDTO = addressService.findOne(firmDTO.getAddressId()).get();
+        modelAndView.addObject("timeSlotSet",timeSlotSet);
+        modelAndView.addObject("employee",employees);
         modelAndView.addObject("customer",customerDTO);
         modelAndView.addObject("address",addressDTO);
         modelAndView.addObject("providedServices",providedServices);

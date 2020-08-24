@@ -13,6 +13,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -85,5 +87,17 @@ public class EmployeeServiceImpl implements EmployeeService {
     public void delete(Long id) {
         log.debug("Request to delete Employee : {}", id);
         employeeRepository.deleteById(id);
+    }
+
+    public List<Employee> findAllEmployeeByFirmId(Long id){
+        log.debug("Request to Employee by Firm id : {}", id);
+        List<Employee> employeeList = employeeRepository.findAll();
+        List<Employee> employees = new ArrayList<>();
+        for (int i = 0 ; i<employeeList.size() ; i++ ){
+            if(employeeList.get(i).getFirm().getId() == id ){
+                employees.add(employeeList.get(i));
+            }
+        }
+        return employees;
     }
 }
