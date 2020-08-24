@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 <!-- basic -->
 <meta charset="utf-8">
@@ -376,7 +376,8 @@
 </div>
 <!-- end section -->
 <!-- section -->
-<div class="section padding_layout_1">
+<div class="section padding_layout_1" >
+    <form th:object="${categoryDetail}" method="post">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
@@ -391,17 +392,19 @@
     <div class="row">
       <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
           <div class="product_list">
-          <div class="product_img"> <a href="index"><img class="img-responsive" src="content/images/home/images/barber.png" alt=""></a> </div>
+
+          <div class="product_img">
+              <a th:href="@{/index/{id}(id = 11)}"> <img class="img-responsive" th:src="'data:image/jpeg;base64,'+${imgUtil.getImageData(categoryDetail.categoryImage)}"  alt=""/></a></div>
           <div class="product_detail_btm">
             <div class="center">
-              <h4><a href="barbour-shop-firms">beauty parlor</a></h4>
+              <h4 th:text="*{name}"></h4>
             </div>
             <div class="starratin">
               <div class="center"> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star-o" aria-hidden="true"></i> </div>
             </div>
           </div>
+          </div>
         </div>
-      </div>
       <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 margin_bottom_30_all">
         <div class="product_list">
           <div class="product_img"> <img class="img-responsive" src="content/images/home/images/doct.png" alt=""> </div>
@@ -441,9 +444,9 @@
           </div>
         </div>
       </div>
-
     </div>
   </div>
+  </form>
 </div>
 <!-- section -->
 <div class="section padding_layout_1 light_silver gross_layout">

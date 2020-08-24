@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html  xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <title>Barbershops</title>
@@ -94,10 +94,6 @@
     </div>
 </section><!-- #intro -->
 
-<main id="main">
-
-
-
     <!--==========================
       Services Section
     ============================-->
@@ -116,7 +112,7 @@
                 <div class="col-sm-3">
                     <div class="thumb-wrapper">
                         <div class="img-box">
-                            <a href="getFirmDetails"><img src="content/images/barbershopFirms/Aloton.jpg" class="img-fluid" alt="" style="height:200px;width:250px;"></a>
+                            <a th:href="@{/getFirm/{id}(id = 43)}"><img src="content/images/barbershopFirms/Aloton.jpg" class="img-fluid" alt="" style="height:200px;width:250px;"></a>
                         </div>
                         <div class="thumb-content">
                             <h4>Alotan</h4>
@@ -130,7 +126,7 @@
                                     <li class="list-inline-item"><i class="fa fa-star-o" style="color:orange"></i></li>
                                 </ul>
                             </div>
-                            <a href="getFirmDetails" class="btn btn-success" style="border-radius: 35px;">Book A Service</a>
+                            <a th:href="@{/getFirm/{id}(id = 43)}" class="btn btn-success" style="border-radius: 35px;">Book A Service</a>
                         </div>
                     </div>
                 </div>
@@ -291,23 +287,6 @@
                     </div>
                 </div>
             </div>
-
-
-
-        </div>
-        </div>
-
-
-
-
-
-
-
-
-        <!-- Carousel controls -->
-
-        </div>
-
         </div>
     </section><!-- #services -->
 
@@ -373,8 +352,6 @@
 
         </div>
     </section><!-- #contact -->
-
-</main>
 
 <!--==========================
   Footer

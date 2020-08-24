@@ -2,6 +2,7 @@ package com.lxisoft.repository;
 
 import com.lxisoft.domain.ProvidedService;
 
+import com.lxisoft.service.dto.ProvidedServiceDTO;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.Repository;
 
@@ -11,4 +12,5 @@ import org.springframework.stereotype.Repository;
 @SuppressWarnings("unused")
 @Repository
 public interface ProvidedServiceRepository extends JpaRepository<ProvidedService, Long> {
+
 }

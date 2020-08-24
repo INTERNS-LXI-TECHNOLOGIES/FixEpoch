@@ -1,10 +1,12 @@
 package com.lxisoft.service;
 
+import com.lxisoft.domain.Firm;
 import com.lxisoft.service.dto.FirmDTO;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -50,4 +52,7 @@ public interface FirmService {
      * @param id the id of the entity.
      */
     void delete(Long id);
+
+    List<Firm> findFirmByCategory(Long id);
+
 }
