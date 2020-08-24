@@ -106,6 +106,11 @@ public class UserController {
         return "firm";
     }
 
+    @GetMapping(value = "/firmAdmin")
+    public String firmAdmin(){
+        return "firmAdmin";
+    }
+
     @GetMapping(value = "/contact")
     public String contact(){
         return "contact";
