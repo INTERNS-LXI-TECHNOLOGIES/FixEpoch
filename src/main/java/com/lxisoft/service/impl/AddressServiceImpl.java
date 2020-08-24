@@ -71,7 +71,7 @@ public class AddressServiceImpl implements AddressService {
      *  Get all the addresses where UserExtra is {@code null}.
      *  @return the list of entities.
      */
-    @Transactional(readOnly = true) 
+    @Transactional(readOnly = true)
     public List<AddressDTO> findAllWhereUserExtraIsNull() {
         log.debug("Request to get all addresses where UserExtra is null");
         return StreamSupport
@@ -104,5 +104,10 @@ public class AddressServiceImpl implements AddressService {
     public void delete(Long id) {
         log.debug("Request to delete Address : {}", id);
         addressRepository.deleteById(id);
+    }
+
+    @Override
+    public void saveAddress(Address address) {
+        addressRepository.save(address);
     }
 }

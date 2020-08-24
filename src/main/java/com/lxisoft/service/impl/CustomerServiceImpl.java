@@ -86,4 +86,9 @@ public class CustomerServiceImpl implements CustomerService {
         log.debug("Request to delete Customer : {}", id);
         customerRepository.deleteById(id);
     }
+
+    @Override
+    public Customer getCustomer(Long id) {
+        return customerRepository.getOne(id);
+    }
 }

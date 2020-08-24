@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <!-- Required meta tags-->
@@ -10,7 +10,7 @@
     <meta name="keywords" content="Colorlib Templates">
 
     <!-- Title Page-->
-    <title>Au Register Forms by Colorlib</title>
+    <title>Register Your Firm</title>
 
     <!-- Icons font CSS-->
     <link href="content/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
@@ -26,24 +26,24 @@
     <link href="content/css/registerFirm/main.css" rel="stylesheet" media="all">
 </head>
 
-<body style="background-image:url('content/images/registerFirm/firmbg.jpeg')">
+<body style="background-image:url('content/images/registerFirm/firmbg.jpeg');opacity: 0.9;">
     <div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
         <div class="wrapper wrapper--w680">
             <div class="card card-4">
                 <div class="card-body">
                     <h2 class="title">Firm Registration</h2>
-                    <form method="POST">
+                    <form method="POST" th:action="@{/firmRegister}" th:object="${registrationModel}" >
                         <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">firm name</label>
-                                    <input class="input--style-4" type="text" name="first_name"  required="required">
+                                    <input class="input--style-4" type="text" name="firm_name" th:field="*{firmName}" required="required">
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Firm Image</label>
-                                    <input class="input--style-4" type="file" name="fileupload">
+                                    <input class="input--style-4" type="file" name="firmImage" th:field="*{image}" >
                                 </div>
                             </div>
                         </div>
@@ -51,13 +51,13 @@
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Address Line One</label>
-                                    <input class="input--style-4" type="text" name="Address1" required="required">
+                                    <input class="input--style-4" type="text" name="Address1" required="required" th:field="*{address.locationAddressLineOne}" >
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Address Line Two</label>
-                                    <input class="input--style-4" type="text" name="Address2" required="required">
+                                    <input class="input--style-4" type="text" name="Address2" th:field="*{address.locationAddressLineTwo}" required="required" >
                                 </div>
                             </div>
                         </div>
@@ -65,13 +65,13 @@
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">City</label>
-                                    <input class="input--style-4" type="text" name="city" required="required">
+                                    <input class="input--style-4" type="text" name="city" required="required" th:field="*{city.district}">
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Pin</label>
-                                    <input class="input--style-4" type="text" name="pin" required="required">
+                                    <input class="input--style-4" type="text" name="pin" required="required" th:field="*{pin.postelCode}">
                                 </div>
                             </div>
                         </div>
@@ -80,19 +80,16 @@
                             <div class="input-group">
                                 <div class="input-group">
                                     <label class="label">State</label>
-                                    <input class="input--style-4" type="text" name="state" required="required">
+                                    <input class="input--style-4" type="text" name="state" required="required" th:field="*{state.state}">
                                 </div>
                             </div>
                         </div>
-                        <div class="col-2">
+                        <div class="col-2" >
                                 <label class="label">Category</label>
                                 <div class="rs-select2 js-select-simple select--no-search">
-                                <select name="subject">
-                                    <option disabled="disabled" selected="selected">Choose Category</option>
-                                    <option>BarberShop</option>
-                                    <option>Plumber</option>
-                                    <option>Hospital</option>
-                                    <option>Advocate</option>
+                                <select name="subject" th:field="*{category}">
+                                    <option disabled="disabled" selected="selected" value="">Choose Category</option>
+                                    <option th:each="Category:${categories}" th:value="${Category.id}" th:text="${Category.name}" value=""></option>
                                 </select>
                                 <div class="select-dropdown"></div>
                                 </div>

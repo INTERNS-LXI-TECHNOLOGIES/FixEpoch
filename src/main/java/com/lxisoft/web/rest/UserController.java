@@ -7,17 +7,25 @@ import com.lxisoft.model.RegistrationModel;
 import com.lxisoft.service.dto.*;
 import com.lxisoft.service.impl.*;
 
+import org.apache.commons.compress.utils.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.FileSystemException;
 import java.util.List;
 import java.util.Optional;
 
@@ -38,6 +46,16 @@ public class UserController {
 
     @Autowired
     CustomerServiceImpl customerService;
+
+    @Autowired
+    private CityServiceImpl cityService;
+
+    @Autowired
+    private StateServiceImpl stateService;
+
+    @Autowired
+    private  PostelCodeServiceImpl postelCodeService;
+
 
     @GetMapping(value = "/home")
     public ModelAndView home()
@@ -175,7 +193,12 @@ public class UserController {
     {
         RegistrationModel registrationModel = new RegistrationModel();
         ModelAndView modelAndView = new ModelAndView();
+        List<Category> categoryList = categoryService.findAllCategory();
+//        for (Category category:categoryList) {
+//            System.out.println(category);
+//        }
         modelAndView.addObject("registrationModel",registrationModel);
+        modelAndView.addObject("categories",categoryList);
         modelAndView.setViewName("firmRegister");
         return modelAndView;
     }
@@ -184,7 +207,48 @@ public class UserController {
     public ModelAndView register(@ModelAttribute("registrationModel") RegistrationModel regModel)
     {
         ModelAndView modelAndView = new ModelAndView();
-        System.out.println(regModel.getCity().getDistrict());
+
+        Firm firm  = new Firm();
+        firm.setName(regModel.getFirmName());
+
+        firm.setImage(regModel.getImage());
+
+
+        Address address = new Address();
+        address.setLocationAddressLineOne(regModel.getAddress().getLocationAddressLineOne());
+        address.setLocationAddressLineTwo(regModel.getAddress().getLocationAddressLineOne());
+
+        City city = new City();
+        city.setDistrict(regModel.getCity().getDistrict());
+
+        State state = new State();
+        state.setState(regModel.getState().getState());
+
+        PostelCode postelCode = new PostelCode();
+        postelCode.setPostelCode(regModel.getPin().getPostelCode());
+
+
+        address.setCity(city);
+        address.setState(state);
+        address.setPostalCode(postelCode);
+
+
+
+        Category category = new Category();
+        category = regModel.getCategory();
+
+        Customer customer = new Customer();
+        customer = customerService.getCustomer(11l);
+
+        cityService.saveCity(city);
+        stateService.saveState(state);
+        postelCodeService.savePostelCode(postelCode);
+        addressService.saveAddress(address);
+        categoryService.saveCategory(category);
+        firm.setCategory(category);
+        firm.setAddress(address);
+        firm.setCustomer(customer);
+        firmService.saveFirm(firm);
         return modelAndView;
     }
 
