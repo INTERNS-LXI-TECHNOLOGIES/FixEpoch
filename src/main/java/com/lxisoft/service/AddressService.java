@@ -1,5 +1,6 @@
 package com.lxisoft.service;
 
+import com.lxisoft.domain.Address;
 import com.lxisoft.service.dto.AddressDTO;
 
 import org.springframework.data.domain.Page;
@@ -50,4 +51,6 @@ public interface AddressService {
      * @param id the id of the entity.
      */
     void delete(Long id);
+
+    void saveAddress(Address address);
 }

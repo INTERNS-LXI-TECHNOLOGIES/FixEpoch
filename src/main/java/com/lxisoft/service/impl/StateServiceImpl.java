@@ -88,4 +88,8 @@ public class StateServiceImpl implements StateService {
     }
 
 
+    @Override
+    public void saveState(State state) {
+        stateRepository.save(state);
+    }
 }

@@ -55,4 +55,7 @@ public interface FirmService {
 
     List<Firm> findFirmByCategory(Long id);
 
+    void  saveFirm(Firm firm);
+
+
 }

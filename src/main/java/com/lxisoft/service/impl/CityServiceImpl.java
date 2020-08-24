@@ -86,4 +86,9 @@ public class CityServiceImpl implements CityService {
         log.debug("Request to delete City : {}", id);
         cityRepository.deleteById(id);
     }
+
+    @Override
+    public void saveCity(City city) {
+        cityRepository.save(city);
+    }
 }

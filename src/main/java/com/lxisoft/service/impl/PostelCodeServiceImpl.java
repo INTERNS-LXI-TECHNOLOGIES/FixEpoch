@@ -86,4 +86,10 @@ public class PostelCodeServiceImpl implements PostelCodeService {
         log.debug("Request to delete PostelCode : {}", id);
         postelCodeRepository.deleteById(id);
     }
+
+
+    @Override
+    public void savePostelCode(PostelCode postelCode) {
+        postelCodeRepository.save(postelCode);
+    }
 }

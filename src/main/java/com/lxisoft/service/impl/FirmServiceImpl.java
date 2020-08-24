@@ -113,6 +113,8 @@ public class FirmServiceImpl implements FirmService {
         return firmByCategory;
     }
 
-
-
+    @Override
+    public void saveFirm(Firm firm) {
+            firmRepository.save(firm);
+    }
 }
