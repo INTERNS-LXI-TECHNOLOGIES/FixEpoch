@@ -1,5 +1,6 @@
 package com.lxisoft.service;
 
+import com.lxisoft.domain.State;
 import com.lxisoft.service.dto.StateDTO;
 
 import org.springframework.data.domain.Page;
@@ -43,4 +44,6 @@ public interface StateService {
      * @param id the id of the entity.
      */
     void delete(Long id);
+
+    void saveState(State state);
 }

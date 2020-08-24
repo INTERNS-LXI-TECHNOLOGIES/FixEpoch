@@ -1,5 +1,7 @@
 package com.lxisoft.service;
 
+import com.lxisoft.domain.PostelCode;
+import com.lxisoft.domain.PostelCode_;
 import com.lxisoft.service.dto.PostelCodeDTO;
 
 import org.springframework.data.domain.Page;
@@ -43,4 +45,6 @@ public interface PostelCodeService {
      * @param id the id of the entity.
      */
     void delete(Long id);
+
+    void savePostelCode(PostelCode postelCode);
 }

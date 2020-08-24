@@ -1,5 +1,6 @@
 package com.lxisoft.service;
 
+import com.lxisoft.domain.City;
 import com.lxisoft.service.dto.CityDTO;
 
 import org.springframework.data.domain.Page;
@@ -43,4 +44,6 @@ public interface CityService {
      * @param id the id of the entity.
      */
     void delete(Long id);
+
+    void saveCity(City city);
 }

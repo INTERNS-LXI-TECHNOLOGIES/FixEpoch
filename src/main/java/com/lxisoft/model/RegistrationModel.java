@@ -18,6 +18,15 @@ public class RegistrationModel {
     private City city;
     private State state;
     private PostelCode pin;
+    private Category category;
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
 
     public City getCity() {
         return city;

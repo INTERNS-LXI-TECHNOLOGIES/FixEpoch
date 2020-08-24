@@ -1,5 +1,6 @@
 package com.lxisoft.service;
 
+import com.lxisoft.domain.Customer;
 import com.lxisoft.service.dto.CustomerDTO;
 
 import org.springframework.data.domain.Page;
@@ -43,4 +44,7 @@ public interface CustomerService {
      * @param id the id of the entity.
      */
     void delete(Long id);
+
+
+    Customer getCustomer(Long id);
 }

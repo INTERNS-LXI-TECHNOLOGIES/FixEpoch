@@ -121,6 +121,8 @@ public class FirmServiceImpl implements FirmService {
         return timeSlotSet;
     }
 
-
-
+    @Override
+    public void saveFirm(Firm firm) {
+            firmRepository.save(firm);
+    }
 }
