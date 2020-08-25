@@ -453,35 +453,23 @@ content="connect-src http://localhost:8080;">
             <div class="col-lg-6 intro_col">
                 <div class="intro_form_container">
                     <div class="intro_form_title">Make an Appointment</div>
-                    <form action="#" class="intro_form" id="appointment_form">
+                    <form th:action="@{/makeAnAppointment}" th:method="GET" class="intro_form" id="appointment_form" th:object="${appointment}">
                         <div class="d-flex flex-row align-items-start justify-content-between flex-wrap">
                             <input type="text" class="intro_input" placeholder="Your Name" required="required">
                             <input type="email" class="intro_input" placeholder="Your E-mail" required="required">
-                            <select class="intro_select intro_input" required >
+                            <select class="intro_select intro_input" required th:field = "*{employeeName}" >
                                 <option disabled="" selected="" value="">Employee</option>
-                                <option>Employee 1</option>
-                                <option>Employee 2</option>
-                                <option>Employee 3</option>
-                                <option>Employee 4</option>
-                                <option>Employee 5</option>
+                                <option th:each="employees : ${employee}" th:value="${employees.id}" th:text="${employees.firstName}"></option>
                             </select>
-                            <select class="intro_select intro_input" required>
+                            <select class="intro_select intro_input" required th:field = "*{providedService}" >
                                 <option disabled="" selected="" value="">Services</option>
-                                <option>Service 1</option>
-                                <option>Service 2</option>
-                                <option>Service 3</option>
-                                <option>Service 4</option>
-                                <option>Service 5</option>
+                                <option th:each="services : ${providedServices}" th:value="${services.id}" th:text="${services.name}" ></option>
                             </select>
-                            <select class="intro_select intro_input" required="required">
+                            <select class="intro_select intro_input" required="required" th:field = "*{timeSlot}" >
                                 <option disabled="" selected="" value="">Available Slots</option>
-                                <option>Slot 1</option>
-                                <option>Slot 2</option>
-                                <option>Slot 3</option>
-                                <option>Slot 4</option>
-                                <option>Slot 5</option>
+                                <option th:each="timeSlot :${timeSlotSet}" th:value="${timeSlot.id}" th:text="${timeSlot.startTime}"></option>
                             </select>
-                            <input type="text" id="datepicker" class="intro_input datepicker" placeholder="Date" required="required">
+                            <input type="text" th:field = "*{date}" id="datepicker" class="intro_input datepicker" placeholder="Date" required="required">
                         </div>
                         <button class="button button_1 intro_button trans_200">make an appointment</button>
                     </form>

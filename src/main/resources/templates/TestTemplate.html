@@ -10,9 +10,11 @@
 
 </head>
 <body>
-
-
-<script  type="text/javascript" language="javascript">
-</script>
+    <div th:object="${appointment}">
+        <h1 th:text="*{employeeName}"> Employee name : </h1>
+        <h1 th:text="*{date}"> Date : </h1>
+        <h1 th:text="*{providedService}"> Provided Service : </h1>
+        <h1 th:text="*{timeSlot}"> Time Slot : </h1>
+    </div>
 </body>
 </html>

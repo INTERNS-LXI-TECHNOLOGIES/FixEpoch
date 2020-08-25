@@ -3,6 +3,7 @@ package com.lxisoft.web.rest;
 
 import com.lxisoft.config.ImageUtil;
 import com.lxisoft.domain.*;
+import com.lxisoft.model.AppointmentModel;
 import com.lxisoft.model.RegistrationModel;
 import com.lxisoft.service.dto.*;
 import com.lxisoft.service.impl.*;
@@ -86,12 +87,14 @@ public class UserController {
 
     @GetMapping(value = "/getFirmDetails")
     public ModelAndView getFirmDetails(ModelAndView modelAndView) {
+        AppointmentModel appointmentModel = new AppointmentModel();
         FirmDTO firmDTO = firmService.findOne(43l).get();
         List<ProvidedService> providedServices = providedServiceService.findAllByFirmId(43l);
         List<Employee> employees =  employeeService.findAllEmployeeByFirmId(43l);
         Set<TimeSlot> timeSlotSet = firmService.findAllTimeSlotsByFirmId(43l);
         CustomerDTO customerDTO = customerService.findOne(firmDTO.getCustomerId()).get();
         AddressDTO addressDTO = addressService.findOne(firmDTO.getAddressId()).get();
+        modelAndView.addObject("appointment", appointmentModel);
         modelAndView.addObject("timeSlotSet",timeSlotSet);
         modelAndView.addObject("employee",employees);
         modelAndView.addObject("customer",customerDTO);
@@ -280,6 +283,14 @@ public class UserController {
     @GetMapping(value = "/test")
     public String testTemplate(){
         return "TestTemplate";
+    }
+
+    @GetMapping(value = "/makeAnAppointment")
+    public ModelAndView  makeAnAppoitment(@ModelAttribute("appointment") AppointmentModel appointmentModel){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("appointment",appointmentModel);
+        modelAndView.setViewName("TestTemplate");
+        return modelAndView;
     }
 
 
