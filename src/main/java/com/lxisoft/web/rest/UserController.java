@@ -85,13 +85,13 @@ public class UserController {
         return "barbour-shop-firms";
     }
 
-    @GetMapping(value = "/getFirmDetails")
-    public ModelAndView getFirmDetails(ModelAndView modelAndView) {
+    @GetMapping(value = "/getFirmDetails/{id}")
+    public ModelAndView getFirmDetails(ModelAndView modelAndView,@PathVariable("id") Long id) {
         AppointmentModel appointmentModel = new AppointmentModel();
-        FirmDTO firmDTO = firmService.findOne(43l).get();
-        List<ProvidedService> providedServices = providedServiceService.findAllByFirmId(43l);
-        List<Employee> employees =  employeeService.findAllEmployeeByFirmId(43l);
-        Set<TimeSlot> timeSlotSet = firmService.findAllTimeSlotsByFirmId(43l);
+        FirmDTO firmDTO = firmService.findOne(id).get();
+        List<ProvidedService> providedServices = providedServiceService.findAllByFirmId(id);
+        List<Employee> employees =  employeeService.findAllEmployeeByFirmId(id);
+        Set<TimeSlot> timeSlotSet = firmService.findAllTimeSlotsByFirmId(id);
         CustomerDTO customerDTO = customerService.findOne(firmDTO.getCustomerId()).get();
         AddressDTO addressDTO = addressService.findOne(firmDTO.getAddressId()).get();
         modelAndView.addObject("appointment", appointmentModel);
@@ -286,7 +286,7 @@ public class UserController {
     }
 
     @GetMapping(value = "/makeAnAppointment")
-    public ModelAndView  makeAnAppoitment(@ModelAttribute("appointment") AppointmentModel appointmentModel){
+    public ModelAndView  makeAnAppointment(@ModelAttribute("appointment") AppointmentModel appointmentModel){
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("appointment",appointmentModel);
         modelAndView.setViewName("TestTemplate");
