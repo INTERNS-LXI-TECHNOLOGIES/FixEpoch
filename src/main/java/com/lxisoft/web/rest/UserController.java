@@ -18,6 +18,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -212,19 +213,33 @@ public class UserController {
     }
 
     @PostMapping(value = "/firmRegister")
-    public ModelAndView register(@ModelAttribute("registrationModel") RegistrationModel regModel)
+    public ModelAndView register(@ModelAttribute("registrationModel") RegistrationModel regModel,
+                                 @RequestParam(name = "firmImage") MultipartFile file,
+                                 RedirectAttributes redirect)
     {
         ModelAndView modelAndView = new ModelAndView();
 
         Firm firm  = new Firm();
         firm.setName(regModel.getFirmName());
 
-        firm.setImage(regModel.getImage());
-
+        if(file.isEmpty())
+        {
+            redirect.addFlashAttribute("message","Select A File To Upload");
+        }
+        try
+        {
+            byte[] bytes = file.getBytes();
+            firm.setImage(bytes);
+            firm.setImageContentType(file.getContentType());
+            System.out.println(file.getBytes()+""+file.getContentType());
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
 
         Address address = new Address();
         address.setLocationAddressLineOne(regModel.getAddress().getLocationAddressLineOne());
-        address.setLocationAddressLineTwo(regModel.getAddress().getLocationAddressLineOne());
+        address.setLocationAddressLineTwo(regModel.getAddress().getLocationAddressLineTwo());
 
         City city = new City();
         city.setDistrict(regModel.getCity().getDistrict());
@@ -244,6 +259,8 @@ public class UserController {
 
         Category category = new Category();
         category = regModel.getCategory();
+
+
 
         Customer customer = new Customer();
         customer = customerService.getCustomer(11l);

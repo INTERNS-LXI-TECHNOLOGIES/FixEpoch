@@ -95,16 +95,16 @@
           <div class="menu_side">
             <div id="navbar_menu">
               <ul class="first-ul">
-                <li> <a class="active" href="it_home.html">Home</a>
+                <li> <a class="active" href="#">Home</a>
                 </li>
-                <li><a href="about1">About Us</a></li>
-                <li> <a href="it_contact.html">Services</a>
-                  <ul>
-                    <li><a href="index">barber</a></li>
-                    <li><a href="it_contact_2.html">doctor</a></li>
-                    <li><a href="it_contact_2.html">advocate</a></li>
-                    <li><a href="it_contact_2.html">plumber</a></li>
-                  </ul>
+                <li><a href="#homeabout">About Us</a></li>
+                <li> <a href="#Services">Services</a>
+<!--                  <ul>-->
+<!--                    <li><a href="index">barber</a></li>-->
+<!--                    <li><a href="it_contact_2.html">doctor</a></li>-->
+<!--                    <li><a href="it_contact_2.html">advocate</a></li>-->
+<!--                    <li><a href="it_contact_2.html">plumber</a></li>-->
+<!--                  </ul>-->
                 </li>
                 </li>
                 <li> <a href="it_shop.html">ACCOUNT</a>
@@ -113,7 +113,7 @@
                     <li><a href="it_shop_detail.html">FIRM OWNER</a></li>
                   </ul>
                 </li>
-                <li> <a href="contact1">Contact</a>
+                <li> <a href="#contact">Contact</a>
                 </li>
               </ul>
             </div>
@@ -376,7 +376,7 @@
 </div>
 <!-- end section -->
 <!-- section -->
-<div class="section padding_layout_1" >
+<div class="section padding_layout_1" id="Services" >
     <form th:object="${categoryDetail}" method="post">
   <div class="container">
     <div class="row">
@@ -449,7 +449,7 @@
   </form>
 </div>
 <!-- section -->
-<div class="section padding_layout_1 light_silver gross_layout">
+<div class="section padding_layout_1 light_silver gross_layout" id="homeabout">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -525,7 +525,7 @@
 </div>
 <!-- end section -->
 <!-- footer -->
-<footer class="footer_style_2">
+<footer class="footer_style_2" id="contact">
     <div class="container-fuild">
         <div class="row">
             <div class="map_section">
