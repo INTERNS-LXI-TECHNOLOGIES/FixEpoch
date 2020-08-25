@@ -129,6 +129,11 @@ public class UserController {
         return "firmAdmin";
     }
 
+    @GetMapping(value = "/register")
+    public String register(){
+        return "register";
+    }
+
     @GetMapping(value = "/contact")
     public String contact(){
         return "contact";
