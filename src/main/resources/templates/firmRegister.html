@@ -32,7 +32,7 @@
             <div class="card card-4">
                 <div class="card-body">
                     <h2 class="title">Firm Registration</h2>
-                    <form method="POST" th:action="@{/firmRegister}" th:object="${registrationModel}" >
+                    <form method="POST" th:action="@{/firmRegister}" th:object="${registrationModel}"  enctype="multipart/form-data" >
                         <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">
@@ -43,7 +43,7 @@
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Firm Image</label>
-                                    <input class="input--style-4" type="file" name="firmImage" th:field="*{image}" >
+                                    <input class="input--style-4" type="file" name="firmImage" >
                                 </div>
                             </div>
                         </div>
@@ -87,7 +87,7 @@
                         <div class="col-2" >
                                 <label class="label">Category</label>
                                 <div class="rs-select2 js-select-simple select--no-search">
-                                <select name="subject" th:field="*{category}">
+                                <select name="subject" th:field="*{category}" style="width: 15rem;height: 3rem;">
                                     <option disabled="disabled" selected="selected" value="">Choose Category</option>
                                     <option th:each="Category:${categories}" th:value="${Category.id}" th:text="${Category.name}" value=""></option>
                                 </select>

@@ -3,6 +3,7 @@ package com.lxisoft.web.rest;
 
 import com.lxisoft.config.ImageUtil;
 import com.lxisoft.domain.*;
+import com.lxisoft.model.AppointmentModel;
 import com.lxisoft.model.RegistrationModel;
 import com.lxisoft.service.dto.*;
 import com.lxisoft.service.impl.*;
@@ -18,6 +19,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -28,6 +30,7 @@ import java.io.InputStream;
 import java.nio.file.FileSystemException;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Controller
 public class UserController {
@@ -36,16 +39,19 @@ public class UserController {
     private CategoryServiceImpl categoryService;
 
     @Autowired
-    FirmServiceImpl firmService;
+    private FirmServiceImpl firmService;
 
     @Autowired
-    ProvidedServiceServiceImpl providedServiceService;
+    private ProvidedServiceServiceImpl providedServiceService;
 
     @Autowired
-    AddressServiceImpl addressService;
+    private AddressServiceImpl addressService;
 
     @Autowired
-    CustomerServiceImpl customerService;
+    private CustomerServiceImpl customerService;
+
+    @Autowired
+    private EmployeeServiceImpl employeeService;
 
     @Autowired
     private CityServiceImpl cityService;
@@ -79,12 +85,18 @@ public class UserController {
         return "barbour-shop-firms";
     }
 
-    @GetMapping(value = "/getFirmDetails")
-    public ModelAndView getFirmDetails(ModelAndView modelAndView) {
-        FirmDTO firmDTO = firmService.findOne(43l).get();
-        List<ProvidedService> providedServices = providedServiceService.findAllByFirmId(43l);
+    @GetMapping(value = "/getFirmDetails/{id}")
+    public ModelAndView getFirmDetails(ModelAndView modelAndView,@PathVariable("id") Long id) {
+        AppointmentModel appointmentModel = new AppointmentModel();
+        FirmDTO firmDTO = firmService.findOne(id).get();
+        List<ProvidedService> providedServices = providedServiceService.findAllByFirmId(id);
+        List<Employee> employees =  employeeService.findAllEmployeeByFirmId(id);
+        Set<TimeSlot> timeSlotSet = firmService.findAllTimeSlotsByFirmId(id);
         CustomerDTO customerDTO = customerService.findOne(firmDTO.getCustomerId()).get();
         AddressDTO addressDTO = addressService.findOne(firmDTO.getAddressId()).get();
+        modelAndView.addObject("appointment", appointmentModel);
+        modelAndView.addObject("timeSlotSet",timeSlotSet);
+        modelAndView.addObject("employee",employees);
         modelAndView.addObject("customer",customerDTO);
         modelAndView.addObject("address",addressDTO);
         modelAndView.addObject("providedServices",providedServices);
@@ -209,19 +221,33 @@ public class UserController {
     }
 
     @PostMapping(value = "/firmRegister")
-    public ModelAndView register(@ModelAttribute("registrationModel") RegistrationModel regModel)
+    public ModelAndView register(@ModelAttribute("registrationModel") RegistrationModel regModel,
+                                 @RequestParam(name = "firmImage") MultipartFile file,
+                                 RedirectAttributes redirect)
     {
         ModelAndView modelAndView = new ModelAndView();
 
         Firm firm  = new Firm();
         firm.setName(regModel.getFirmName());
 
-        firm.setImage(regModel.getImage());
-
+        if(file.isEmpty())
+        {
+            redirect.addFlashAttribute("message","Select A File To Upload");
+        }
+        try
+        {
+            byte[] bytes = file.getBytes();
+            firm.setImage(bytes);
+            firm.setImageContentType(file.getContentType());
+            System.out.println(file.getBytes()+""+file.getContentType());
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
 
         Address address = new Address();
         address.setLocationAddressLineOne(regModel.getAddress().getLocationAddressLineOne());
-        address.setLocationAddressLineTwo(regModel.getAddress().getLocationAddressLineOne());
+        address.setLocationAddressLineTwo(regModel.getAddress().getLocationAddressLineTwo());
 
         City city = new City();
         city.setDistrict(regModel.getCity().getDistrict());
@@ -242,6 +268,8 @@ public class UserController {
         Category category = new Category();
         category = regModel.getCategory();
 
+
+
         Customer customer = new Customer();
         customer = customerService.getCustomer(11l);
 
@@ -260,6 +288,14 @@ public class UserController {
     @GetMapping(value = "/test")
     public String testTemplate(){
         return "TestTemplate";
+    }
+
+    @GetMapping(value = "/makeAnAppointment")
+    public ModelAndView  makeAnAppointment(@ModelAttribute("appointment") AppointmentModel appointmentModel){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("appointment",appointmentModel);
+        modelAndView.setViewName("TestTemplate");
+        return modelAndView;
     }
 
 

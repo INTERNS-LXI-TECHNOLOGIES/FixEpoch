@@ -10,25 +10,29 @@ content="connect-src http://localhost:8080;">
 
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
 
-    <link rel="stylesheet" href="content/css/bootstrap.css">
-    <link rel="stylesheet" href="content/css/animate.css">
-    <link rel="stylesheet" href="content/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="content/css/magnific-popup.css">
+    <link rel="stylesheet" href="../content/css/bootstrap.css">
+    <link rel="stylesheet" href="../content/css/animate.css">
+    <link rel="stylesheet" href="../content/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../content/css/magnific-popup.css">
 
-    <link rel="stylesheet" href="content/fonts/ionicons/css/ionicons.min.css">
-    <link rel="stylesheet" href="content/fonts/fontawesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="content/fonts/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="../content/fonts/ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="../content/fonts/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../content/fonts/flaticon/font/flaticon.css">
 
-    <link rel="stylesheet" type="text/css" href="content/css/opensans-font.css">
-    <link rel="stylesheet" type="text/css" href="content/fonts/line-awesome/css/line-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../content/css/opensans-font.css">
+    <link rel="stylesheet" type="text/css" href="../content/fonts/line-awesome/css/line-awesome.min.css">
     <!-- Jquery -->
     <link rel="stylesheet" href="https://jqueryvalidation.org/files/demo/site-demos.css">
     <!-- Main Style Css -->
-    <link rel="stylesheet" href="content/css/login.css"/>
+    <link rel="stylesheet" href="../content/css/login.css"/>
 
     <!-- Theme Style -->
-    <link rel="stylesheet" href="content/css/style.css">
-    <link rel="stylesheet" href="content/css/login/login.css">
+    <link rel="stylesheet" href="../content/css/style.css">
+    <link rel="stylesheet" href="../content/css/login/login.css">
+
+    <link rel="stylesheet" href="../content/css/appointment/plugins/jqueryDatePicker/jquery-ui.css" >
+    <link rel="stylesheet" href="../content/css/appointment/styles/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="../content/css/appointment/styles/main_styles.css" type="text/css">
 
 </head>
 
@@ -72,13 +76,13 @@ content="connect-src http://localhost:8080;">
 </header>
 <!-- END header -->
 
-<section class="site-hero overlay" data-stellar-background-ratio="0.5" id="sesctionId" style="background-image: url(content/images/big_image_1.jpg) " >
+<section class="site-hero overlay" data-stellar-background-ratio="0.5" id="sesctionId" style="background-image: url('../content/images/big_image_1.jpg') " >
     <div class="container">
         <div class="row align-items-center site-hero-inner justify-content-center">
             <div class="col-md-8 text-center">
 
                 <div class="mb-5 element-animate">
-                    <img src="content/images/banner_text_1.png" alt="Image placeholder" class="img-md-fluid">
+                    <img src="../content/images/banner_text_1.png" alt="Image placeholder" class="img-md-fluid">
                 </div>
 
             </div>
@@ -244,7 +248,7 @@ content="connect-src http://localhost:8080;">
 </section>
 <!-- END section -->
 
-<section class="section-cover cta" data-stellar-background-ratio="0.5" style="background-image: url(content/images/big_image_2.jpg);">
+<!--<section class="section-cover cta" data-stellar-background-ratio="0.5" style="background-image: url(content/images/big_image_2.jpg);">
     <div class="container">
         <div class="row justify-content-center align-items-center intro">
             <div class="col-md-8 text-center element-animate">
@@ -253,7 +257,7 @@ content="connect-src http://localhost:8080;">
             </div>
         </div>
     </div>
-</section>
+</section>-->
 <!-- END section -->
 
 
@@ -378,8 +382,7 @@ content="connect-src http://localhost:8080;">
                     <option>Employee 4</option>
                     <option>Employee 5</option>
                 </select>
-                <input type="text" id="datepicker" class="intro_input datepicker" placeholder="Date" required="required">
-            </div>
+               </div>
             <br>
             <div class="form-row-last" style="padding-left: 313px;">
                 <input type="submit" name="make_an_Appointment" class="register" value="Make an Appointment">
@@ -389,13 +392,95 @@ content="connect-src http://localhost:8080;">
 </div>
 <!--End Appointment-->
 
-<div>
-   <!--<input type="submit" name="logOut" value="LOGOUT" href="/logout">-->
-    <form>
-        <button type="submit" formaction="/logout" >LOGOUT</button>
-    </form>
+<!--Appointment Starts-->
+<div class="intro">
+    <div class="container">
+        <div class="row">
 
+            <!-- Intro Content -->
+            <div class="col-lg-6 intro_col">
+                <div class="intro_content">
+                    <div class="section_title_container">
+                        <div class="section_title"><h2>Welcome to our Shop</h2></div>
+                    </div>
+                    <div class="intro_text">
+                        <p>Integer aliquet congue libero, eu gravida odio ultrices ut. Etiam ac erat ut enim maximus accumsan vel ac nisl. Duis feugiat bibendum orci, non elementum urna vestibulum in. Nulla facilisi. Nulla egestas vel lacus sed interdum. Sed mollis, orci elementum eleifend tempor, nunc libero porttitor tellus, vel pharetra metus dolor.</p>
+                    </div>
+                    <div class="milestones">
+                        <div class="row milestones_row">
+
+                            <!-- Milestone -->
+                            <div class="col-md-4 milestone_col">
+                                <div class="milestone">
+                                    <div class="milestone_counter" data-end-value="5000" data-sign-before="+">0</div>
+                                    <div class="milestone_text">Satisfied Customers</div>
+                                </div>
+                            </div>
+
+                            <!-- Milestone -->
+                            <div class="col-md-4 milestone_col">
+                                <div class="milestone">
+                                    <div class="milestone_counter" data-end-value="352">0</div>
+                                    <div class="milestone_text">Face Liftings</div>
+                                </div>
+                            </div>
+
+                            <!-- Milestone -->
+                            <div class="col-md-4 milestone_col">
+                                <div class="milestone">
+                                    <div class="milestone_counter" data-end-value="718">0</div>
+                                    <div class="milestone_text">Injectibles</div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--<div th:each="services : ${providedServices}">
+                <a href="#" class="img-bg">
+                    <img class="img-bg" th:src="'data:image/jpeg;base64,'+${imgUtil.getImageData(services.serviceImage)}">
+                    <div class="text">
+                        <span class="icon custom-icon flaticon-scissors"></span>
+                        <h2 th:text="${services.name}"></h2>
+                        <p>Read More</p>
+                    </div>
+                </a>
+            </div>-->
+
+            <!-- Intro Form -->
+            <div class="col-lg-6 intro_col">
+                <div class="intro_form_container">
+                    <div class="intro_form_title">Make an Appointment</div>
+                    <form th:action="@{/makeAnAppointment}" th:method="GET" class="intro_form" id="appointment_form" th:object="${appointment}">
+                        <div class="d-flex flex-row align-items-start justify-content-between flex-wrap">
+                            <input type="text" class="intro_input" placeholder="Your Name" required="required">
+                            <input type="email" class="intro_input" placeholder="Your E-mail" required="required">
+                            <select class="intro_select intro_input" required th:field = "*{employeeName}" >
+                                <option disabled="" selected="" value="">Employee</option>
+                                <option th:each="employees : ${employee}" th:value="${employees.id}" th:text="${employees.firstName}"></option>
+                            </select>
+                            <select class="intro_select intro_input" required th:field = "*{providedService}" >
+                                <option disabled="" selected="" value="">Services</option>
+                                <option th:each="services : ${providedServices}" th:value="${services.name}" th:text="${services.name}" ></option>
+                            </select>
+                            <select class="intro_select intro_input" required="required" th:field = "*{timeSlot}" >
+                                <option disabled="" selected="" value="">Available Slots</option>
+                                <option th:each="timeSlot :${timeSlotSet}" th:value="${timeSlot.id}" th:text="${timeSlot.startTime}"></option>
+                            </select>
+                            <input type="text" th:field = "*{date}" id="datepicker" class="intro_input datepicker" placeholder="Date" required="required">
+                        </div>
+                        <button class="button button_1 intro_button trans_200">make an appointment</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
 </div>
+
+<!--Appointment ends-->
 
 <!-- Intro -->
 
@@ -465,23 +550,30 @@ content="connect-src http://localhost:8080;">
 <!-- loader -->
 <div id="loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#f4b214"/></svg></div>
 
-<script src="content/js/jquery-3.2.1.min.js"></script>
-<script src="content/js/jquery-migrate-3.0.0.js"></script>
-<script src="content/js/popper.min.js"></script>
-<script src="content/js/bootstrap.min.js"></script>
-<script src="content/js/owl.carousel.min.js"></script>
-<script src="content/js/jquery.waypoints.min.js"></script>
-<script src="content/js/jquery.stellar.min.js"></script>
+<script src="../content/js/appointment/jquery-4.2.1.min.js"></script>
+<script src="../content/js/appointment/ScrollMagic.min.js"></script>
+<script src="../content/js/appointment/jquery-ui.js"></script>
+<script src="../content/js/appointment/custom.js"></script>
 
-<script src="content/js/jquery.magnific-popup.min.js"></script>
-<script src="content/js/magnific-popup-options.js"></script>
+<script src="../content/js/jquery-3.2.1.min.js"></script>
+<script src="../content/js/jquery-migrate-3.0.0.js"></script>
+<script src="../content/js/popper.min.js"></script>
+<script src="../content/js/bootstrap.min.js"></script>
+<script src="../content/js/owl.carousel.min.js"></script>
+<script src="../content/js/jquery.waypoints.min.js"></script>
+<script src="../content/js/jquery.stellar.min.js"></script>
 
-<script src="content/js/main.js"></script>
+<script src="../content/js/jquery.magnific-popup.min.js"></script>
+<script src="../content/js/magnific-popup-options.js"></script>
+
+<script src="../content/js/main.js"></script>
 
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="http://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 <script src="http://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
-<script src="content/js/login/login.js"></script>
+<script src="../content/js/login/login.js"></script>
+
+
 
 <style>
 
@@ -511,6 +603,12 @@ display:none;
 }
 </style>
 <script type="text/javascript" language="javascript">
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-23581568-13');
 
     function change()
     {
